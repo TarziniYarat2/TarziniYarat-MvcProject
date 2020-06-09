@@ -2051,8 +2051,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CartItem.cs" />
     <Compile Include="Models\HomeProductViewModel.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
+    <Compile Include="Models\ProductViewModel.cs" />
     <Compile Include="Models\UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -2309,6 +2311,8 @@
     <Content Include="Views\Sites\HomePage.cshtml" />
     <Content Include="Views\Card\Card.cshtml" />
     <Content Include="Views\Sites\Profil.cshtml" />
+    <Content Include="Views\Card\_CartList.cshtml" />
+    <Content Include="Views\Card\List.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

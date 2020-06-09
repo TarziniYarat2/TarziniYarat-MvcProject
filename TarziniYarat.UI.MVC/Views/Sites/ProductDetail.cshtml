@@ -5,182 +5,205 @@
 }
 
 
-    <!--================Home Banner Area =================-->
-    <section class="banner_area">
-        <div class="banner_inner d-flex align-items-center">
-            <div class="container">
-                <div class="banner_content text-center">
-                    <br />
-                    <br />
-                    <h2>Ürün Detay</h2>
-                    <div class="page_link">
-                        <a href="/Sites/HomePage">Ana Sayfa</a>
-                        <a href="/Sites/ProductDetail">Ürün Detay</a>
-                    </div>
+<!--================Home Banner Area =================-->
+<section class="banner_area">
+    <div class="banner_inner d-flex align-items-center">
+        <div class="container">
+            <div class="banner_content text-center">
+                <br />
+                <br />
+                <h2>Ürün Detay</h2>
+                <div class="page_link">
+                    <a href="/Sites/HomePage">Ana Sayfa</a>
+                    <a href="/Sites/ProductDetail">Ürün Detay</a>
                 </div>
             </div>
         </div>
-    </section>
-    <!--================End Home Banner Area =================-->
-    <!--================Single Product Area =================-->
-    <div class="product_image_area">
-        <div class="container">
-            <div class="row s_product_inner">
-                <div class="col-lg-6">
-                    <div class="s_product_img">
-                        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    @{
-                                        var base65 = Convert.ToBase64String(Model.Photo);
-                                        var img2 = string.Format("data:image/gif;base64,{0}", base65);
-                                    }
-                                    <img class="d-block w-100" src="@img2" alt="First slide">
-                                </div>
+    </div>
+</section>
+<!--================End Home Banner Area =================-->
+<!--================Single Product Area =================-->
+<div class="product_image_area">
+    <div class="container">
+        <div class="row s_product_inner">
+            <div class="col-lg-6">
+                <div class="s_product_img">
+                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                @{
+                                    var base65 = Convert.ToBase64String(Model.Photo);
+                                    var img2 = string.Format("data:image/gif;base64,{0}", base65);
+                                }
+                                <img class="d-block w-100" src="@img2" alt="First slide">
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-5 offset-lg-1">
-                    <div class="s_product_text">
-                        @* Ürün adı buraya *@
-                        <h3>@Model.ProductName</h3>
-                        @* Ürün fiyatı buraya *@
-                        <h2>@Model.UnitPrice TL</h2>
-                        <ul class="list">
-                            <li>
-                                <a class="active" href="#">
-                                    @* Kategori adı buraya *@
-                                    <span>Kategori</span> : @Model.Category.CategoryName
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    @* stok miktarı buraya *@
-                                    <span>Stok Miktarı</span> : Son @Model.UnitsInStock Adet Ürün
-                                </a>
-                            </li>
-                        </ul>
-                        @* Ürün açıklaması buraya *@
-                        <p>@Model.Description </p>
-                        <div class="product_count">
-                            <label for="qty">Adet:</label>
-                            @* Ürün miktarı (alınacak) *@
-                            <input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:" class="input-text qty">
-                            <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
-                                    class="increase items-count" type="button">
-                                <i class="lnr lnr-chevron-up"></i>
-                            </button>
-                            <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
-                                    class="reduced items-count" type="button">
-                                <i class="lnr lnr-chevron-down"></i>
-                            </button>
+            </div>
+            <div class="col-lg-5 offset-lg-1">
+                <div class="s_product_text">
+                    @* Ürün adı buraya *@
+                    <h3>@Model.ProductName</h3>
+                    @* Ürün fiyatı buraya *@
+                    <h2>@Model.UnitPrice TL</h2>
+                    <ul class="list">
+                        <li>
+                            <a class="active" href="#">
+                                @* Kategori adı buraya *@
+                                <span>Kategori</span> : @Model.Category.CategoryName
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                @* stok miktarı buraya *@
+                                <span>Stok Miktarı</span> : Son @Model.UnitsInStock Adet Ürün
+                            </a>
+                        </li>
+                    </ul>
+                    @* Ürün açıklaması buraya *@
+                    <p>@Model.Description </p>
+                    <div class="product_count">
+                        <label for="qty">Adet:</label>
+                        @* Ürün miktarı (alınacak) *@
+                        <input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:" class="input-text qty">
+                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
+                                class="increase items-count" type="button">
+                            <i class="lnr lnr-chevron-up"></i>
+                        </button>
+                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
+                                class="reduced items-count" type="button">
+                            <i class="lnr lnr-chevron-down"></i>
+                        </button>
+                    </div>
+                    <div class="card_area">
+                        <a href="javascript:void(0)" data-productID="@Model.ProductID" class="addCart btn btn-primary">Sepete Ekle</a>
+                        <a href="/Card/List" class="btn btn-outline-primary">Sepete Git</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--================End Single Product Area =================-->
+<!--================Product Description Area =================-->
+<section class="product_description_area">
+    <div class="container">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Yorumlar</a>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="comment_list">
+                            <div class="review_item">
+                                <div class="media">
+                                    <div class="d-flex">
+                                        <img src="~/Assets/img/review-1.png" />
+                                    </div>
+                                    <div class="media-body">
+                                        @* Yorum yapanın adı *@
+                                        <h4>Blake Ruiz</h4>
+                                        @* yorum tarihi *@
+                                        <h5>12th Feb, 2017 at 05:56 pm</h5>
+                                        <a class="reply_btn" href="#">Cevapla</a>
+                                    </div>
+                                </div>
+                                @* Yorum kısmı *@
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                                </p>
+                            </div>
+                            <div class="review_item reply">
+                                <div class="media">
+                                    <div class="d-flex">
+                                        <img src="~/Assets/img/review-2.png" />
+                                    </div>
+                                    <div class="media-body">
+                                        <h4>Blake Ruiz</h4>
+                                        <h5>12th Feb, 2017 at 05:56 pm</h5>
+                                        <a class="reply_btn" href="#">Reply</a>
+                                    </div>
+                                </div>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                                </p>
+                            </div>
+                            <div class="review_item">
+                                <div class="media">
+                                    <div class="d-flex">
+                                        <img src="~/Assets/img/review-3.png" />
+                                    </div>
+                                    <div class="media-body">
+                                        <h4>Blake Ruiz</h4>
+                                        <h5>12th Feb, 2017 at 05:56 pm</h5>
+                                        <a class="reply_btn" href="#">Reply</a>
+                                    </div>
+                                </div>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                                </p>
+                            </div>
                         </div>
-                        <div class="card_area">
-                            <a class="main_btn" href="/Sites/">Sepete Ekle</a>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="review_box">
+                            <h4>Yorum Gönder</h4>
+                            <form class="row contact_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
+                                @*<div class="col-md-12">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="name" name="name" placeholder="Kullanıcı adı">
+                                        </div>
+                                    </div>*@
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <input type="email" class="form-control" id="email" name="email" placeholder="Kullanıcı Adı">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <textarea class="form-control" name="message" id="message" rows="1" placeholder="Yorumunuz"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 text-right">
+                                    <button type="submit" value="submit" class="btn submit_btn">Gönder</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!--================End Single Product Area =================-->
-    <!--================Product Description Area =================-->
-    <section class="product_description_area">
-        <div class="container">
-            <ul class="nav nav-tabs" id="myTab" role="tablist">
-                <li class="nav-item">
-                    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Yorumlar</a>
-                </li>
-            </ul>
-            <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="comment_list">
-                                <div class="review_item">
-                                    <div class="media">
-                                        <div class="d-flex">
-                                            <img src="~/Assets/img/review-1.png" />
-                                        </div>
-                                        <div class="media-body">
-                                            @* Yorum yapanın adı *@
-                                            <h4>Blake Ruiz</h4>
-                                            @* yorum tarihi *@
-                                            <h5>12th Feb, 2017 at 05:56 pm</h5>
-                                            <a class="reply_btn" href="#">Cevapla</a>
-                                        </div>
-                                    </div>
-                                    @* Yorum kısmı *@
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                                        aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                    </p>
-                                </div>
-                                <div class="review_item reply">
-                                    <div class="media">
-                                        <div class="d-flex">
-                                            <img src="~/Assets/img/review-2.png" />
-                                        </div>
-                                        <div class="media-body">
-                                            <h4>Blake Ruiz</h4>
-                                            <h5>12th Feb, 2017 at 05:56 pm</h5>
-                                            <a class="reply_btn" href="#">Reply</a>
-                                        </div>
-                                    </div>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                                        aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                    </p>
-                                </div>
-                                <div class="review_item">
-                                    <div class="media">
-                                        <div class="d-flex">
-                                            <img src="~/Assets/img/review-3.png" />
-                                        </div>
-                                        <div class="media-body">
-                                            <h4>Blake Ruiz</h4>
-                                            <h5>12th Feb, 2017 at 05:56 pm</h5>
-                                            <a class="reply_btn" href="#">Reply</a>
-                                        </div>
-                                    </div>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                                        aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="review_box">
-                                <h4>Yorum Gönder</h4>
-                                <form class="row contact_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
-                                    @*<div class="col-md-12">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" id="name" name="name" placeholder="Kullanıcı adı">
-                                        </div>
-                                    </div>*@
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <input type="email" class="form-control" id="email" name="email" placeholder="Kullanıcı Adı">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <textarea class="form-control" name="message" id="message" rows="1" placeholder="Yorumunuz"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12 text-right">
-                                        <button type="submit" value="submit" class="btn submit_btn">Gönder</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--================End Product Description Area =================-->
+</section>
+<!--================End Product Description Area =================-->
 
 
+
+@section scripts{
+    <script>
+        $(".addCart").click(function () {
+            var productID = $(this).attr("data-productID");
+
+            $.ajax({
+                type: "GET",
+                url: "/Card/AddToCart?productID=" + productID,
+                success: function (data) {
+                    if (data == "Ürün bulunamadı") {
+                        alert("Yanlış ürün eklediniz");
+                    }
+                    else {
+                        alert("Sepetteki ürün sayısı : " + data);
+                    }
+                }
+            });
+
+        });
+    </script>
+}
