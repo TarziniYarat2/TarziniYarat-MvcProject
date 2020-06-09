@@ -1,0 +1,194 @@
+﻿@model IEnumerable<TarziniYarat.Model.Category>
+
+@{
+    ViewBag.Title = "CategoryList";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Kategoriler</h2>
+<br />
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoryName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </th>
+        <th>
+            Güncelle
+        </th>
+        <th>
+            Aktif/Pasif
+        </th>
+        <th>
+            Sil
+        </th>
+        <th>
+            Ürünlere Git
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.CategoryName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Description)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.IsActive)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CreatedDate)
+    </td>
+    <td>
+        <button href="#" class="btn btn-primary btnUpdate" dataID="@item.CategoryID">
+            Güncelle
+        </button>
+    </td>
+    <td>
+        <button href="#" name="categoryActive" class="btn btn-primary  btnActivate" data="@item.CategoryID">
+            Aktif/Pasif
+        </button>
+    </td>
+    <td>
+        <button href="#" class="btn btn-danger btnDelete" dataCategoryID="@item.CategoryID">
+            Sil
+        </button>
+    </td>
+    <td>
+        @Html.ActionLink("Ürünlerine Git", "ProductList", new { brandID = item.CategoryID }, new { @class = "btn btn-success" })
+    </td>
+</tr>
+    }
+</table>
+<br />
+<div>
+    <h4>Kategori Düzenle</h4>
+</div>
+<div>
+    <form id="UpdateCategory">
+
+        <div class="form-group">
+            <div class="input-group">
+                <input class="form-control" type="text" name="categoryName" id="categoryName" placeholder="Kategori Adını Giriniz." />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <input class="form-control" type="text" name="categoryDescription" id="categoryDescription" placeholder="Kategori Açıklamasını Giriniz." />
+            </div>
+        </div>
+    </form>
+    <div class="form-group">
+        <button class="btn btn-success form-control" id="btnUpdateChange" type="submit">Değişiklikleri Kaydet</button>
+    </div>
+</div>
+<br />
+@Html.ActionLink("Kategori Ekleme Sayfasına Git", "AddCategory")
+
+@section scripts{
+
+    <script>
+
+
+        $("#btnUpdateChange").click(function () {
+            var categoryID = $(this).attr("dataID");
+            var category = {
+                "CategoryName": $("#categoryName").val(),
+                "Description": $("#categoryDescription").val(),
+                "CategoryID": categoryID,
+            }
+            $.ajax({
+                url: "/AdminProcess/UpdateCategory/",
+                type: "POST",
+                data: category,
+                success: function (resp) {
+                    if (resp == "ok") {
+                        alert("Güncelleme Başarılı")
+                        window.location.reload();
+                    }
+
+                },
+                onerror: function (err) {
+                    alert("İstek başarısız.")
+                    console.log(err);
+                }
+            })
+        })
+
+        $(".btnUpdate").click(function () {
+            var categoryID = $(this).attr("dataID");
+            $.ajax({
+                url: "/AdminProcess/GetCategory/" + categoryID,
+                type: "POST",
+                success: function (resp) {
+                    if (resp != null) {
+                        $("#categoryName").val(resp.CategoryName);
+                        $("#categoryDescription").val(resp.Description);
+                        $("#btnUpdateChange").attr("dataID", categoryID);
+                    }
+                },
+                onerror: function (err) {
+                    alert("Hata Oluştu.")
+                    console.log(err);
+                }
+            })
+        })
+
+        //Pasifleştirme
+
+        $(".btnActivate").click(function () {
+            var categoryID = $(this).attr("data");
+            var category = {
+                "IsActıve": $("#categoryActive").val(),
+                "CategoryID": categoryID,
+            }
+            $.ajax({
+                type: "POST",
+                url: "/AdminProcess/ActivateCategory/" + categoryID,
+                data: category,
+                success: function (resp) {
+                    if (resp == "ok") {
+                        alert("Başarıyla değiştirildi");
+                        window.location.reload();
+                    }
+                    else {
+                        alert("İşlemde bir hata oluştu.");
+                        console.log(err);
+                    }
+                }
+            });
+        });
+
+        $(".btnDelete").click(function () {
+            var categoryID = $(this).attr("dataCategoryID");
+            $.ajax({
+                url: "/AdminProcess/DeleteCategory/" + categoryID,
+                type: "POST",
+                success: function (data) {
+                    if (data == "ok") {
+                        alert("Silme İşlemi Başarılı");
+                        window.location.reload();
+                    }
+                },
+                error: function (err) {
+                    alert("Hata Oluştu.");
+                    console.log(err);
+                }
+            });
+        })
+    </script>
+
+}
+
