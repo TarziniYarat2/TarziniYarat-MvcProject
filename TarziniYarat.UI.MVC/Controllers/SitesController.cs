@@ -80,6 +80,27 @@ namespace TarziniYarat.UI.MVC.Controllers
             //ViewBag.Product = _productService.GetByID(id);
             return View(_productService.GetByID(id));
         }
+
+        public ActionResult Profil(int id) //kullanıcı profil sayfası yapıldı.
+        {
+            return View(_personService.GetByID(id));
+        }
+
+        [HttpPost]
+        public ActionResult Profil(Person p)
+        {
+            Person person = new Person();
+            person.TCKN = p.TCKN;
+            person.Name = p.Name;
+            person.Surname = p.Surname;
+            person.Username = p.Username;
+            person.Password = p.Password;
+            _personService.Update(person);
+            return View();
+        }
+
+
+
         public ActionResult Combine()
         {
             return View();
@@ -128,6 +149,10 @@ namespace TarziniYarat.UI.MVC.Controllers
                     else if (item.RoleID==3 && item.IsActive==true)
                     {
                         return RedirectToAction("Home", "Sites", new  { Username = item.Username, PersonID = item.PersonID });
+                    }
+                    else if (item.RoleID == 2 || item.RoleID == 3)
+                    {
+                        return RedirectToAction("Profil", "Sites", new { id = item.PersonID });
                     }
                 }
                 else
