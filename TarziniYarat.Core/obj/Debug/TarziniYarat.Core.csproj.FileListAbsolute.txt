@@ -1,0 +1,12 @@
+C:\Users\Kubra SEYREK\Desktop\TarziniYarat-MvcProjesi\TarziniYarat.Core\bin\Debug\TarziniYarat.Core.dll.config
+C:\Users\Kubra SEYREK\Desktop\TarziniYarat-MvcProjesi\TarziniYarat.Core\bin\Debug\TarziniYarat.Core.dll
+C:\Users\Kubra SEYREK\Desktop\TarziniYarat-MvcProjesi\TarziniYarat.Core\bin\Debug\TarziniYarat.Core.pdb
+C:\Users\Kubra SEYREK\Desktop\TarziniYarat-MvcProjesi\TarziniYarat.Core\bin\Debug\EntityFramework.dll
+C:\Users\Kubra SEYREK\Desktop\TarziniYarat-MvcProjesi\TarziniYarat.Core\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Kubra SEYREK\Desktop\TarziniYarat-MvcProjesi\TarziniYarat.Core\bin\Debug\EntityFramework.xml
+C:\Users\Kubra SEYREK\Desktop\TarziniYarat-MvcProjesi\TarziniYarat.Core\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Kubra SEYREK\Desktop\TarziniYarat-MvcProjesi\TarziniYarat.Core\obj\Debug\TarziniYarat.Core.csprojAssemblyReference.cache
+C:\Users\Kubra SEYREK\Desktop\TarziniYarat-MvcProjesi\TarziniYarat.Core\obj\Debug\TarziniYarat.Core.csproj.CoreCompileInputs.cache
+C:\Users\Kubra SEYREK\Desktop\TarziniYarat-MvcProjesi\TarziniYarat.Core\obj\Debug\TarziniYarat.Core.csproj.CopyComplete
+C:\Users\Kubra SEYREK\Desktop\TarziniYarat-MvcProjesi\TarziniYarat.Core\obj\Debug\TarziniYarat.Core.dll
+C:\Users\Kubra SEYREK\Desktop\TarziniYarat-MvcProjesi\TarziniYarat.Core\obj\Debug\TarziniYarat.Core.pdb
