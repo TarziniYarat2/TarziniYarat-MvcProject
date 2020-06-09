@@ -2045,7 +2045,6 @@
     <Compile Include="Areas\Admin\Controllers\AdminProcessController.cs" />
     <Compile Include="Areas\Admin\Controllers\MembersOrderController.cs" />
     <Compile Include="Areas\Admin\ViewModels\ShipperProductVM.cs" />
-    <Compile Include="Controllers\Class1.cs" />
     <Compile Include="Controllers\SitesController.cs" />
     <Compile Include="Filtres\CustomAuthorize.cs" />
     <Compile Include="Global.asax.cs">
