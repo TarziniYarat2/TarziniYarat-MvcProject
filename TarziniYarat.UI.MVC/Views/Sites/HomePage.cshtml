@@ -125,9 +125,8 @@
                                     }
                                     <img class="img-fluid" src="@img2" style="max-height:200px;max-width:150px;" />
                                 </div>
-                                <a href="#">
-                                    <h4>@item.ProductName</h4>
-                                </a>
+                                <br />
+                                @Html.ActionLink(item.ProductName, "ProductDetail", new { id = item.ProductID })
                                 <h5>@item.UnitPrice TL</h5>
                             </div>
                         </div>

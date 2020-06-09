@@ -2045,6 +2045,7 @@
     <Compile Include="Areas\Admin\Controllers\AdminProcessController.cs" />
     <Compile Include="Areas\Admin\Controllers\MembersOrderController.cs" />
     <Compile Include="Areas\Admin\ViewModels\ShipperProductVM.cs" />
+    <Compile Include="Controllers\CardController.cs" />
     <Compile Include="Controllers\SitesController.cs" />
     <Compile Include="Filtres\CustomAuthorize.cs" />
     <Compile Include="Global.asax.cs">
@@ -2306,7 +2307,7 @@
     <Content Include="Views\Sites\ProductDetail.cshtml" />
     <Content Include="Views\Sites\WaitPage.cshtml" />
     <Content Include="Views\Sites\HomePage.cshtml" />
-    <Content Include="Views\Sites\Card.cshtml" />
+    <Content Include="Views\Card\Card.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

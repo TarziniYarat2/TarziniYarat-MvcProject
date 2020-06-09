@@ -109,10 +109,6 @@ namespace TarziniYarat.UI.MVC.Controllers
             return View();
         }
 
-        public ActionResult Card()
-        {
-            return View();
-        }
         [HttpPost]
         public ActionResult Login(LoginViewModel login)
         {
