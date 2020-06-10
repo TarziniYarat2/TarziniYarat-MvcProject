@@ -13,7 +13,6 @@
         {
             AutomaticMigrationsEnabled = true;
             AutomaticMigrationDataLossAllowed = true;
-
         }
 
         protected override void Seed(TarziniYarat.DataAccess.Concrete.EntityFramework.TarziniYaratDbContext context)
@@ -28,19 +27,19 @@
             };
             context.Roles.AddRange(roles);
 
-            Person admin = new Person()
-            {
-                Name = "Admin",
-                Surname = "Admin",
-                Username = "thelastdance@mail.com",
-                Password = "123456",
-                CreatedDate = DateTime.Now,
-                IsActive = true,
-                RoleID = 1,
-                TCKN = "12345678978",
-                BirthDate = DateTime.Now
-            };
-            context.Persons.Add(admin);
+            //Person admin = new Person()
+            //{
+            //    Name = "Admin",
+            //    Surname = "Admin",
+            //    Username = "thelastdance@mail.com",
+            //    Password = "123456",
+            //    CreatedDate = DateTime.Now,
+            //    IsActive = true,
+            //    RoleID = 1,
+            //    TCKN = "12345678978",
+            //    BirthDate = DateTime.Now
+            //};
+            //context.Persons.Add(admin);
             context.SaveChanges();
         }
     }
