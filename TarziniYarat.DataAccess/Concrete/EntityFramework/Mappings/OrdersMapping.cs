@@ -17,14 +17,13 @@ namespace TarziniYarat.DataAccess.Concrete.EntityFramework.Mappings
 
             HasRequired(a => a.Person)
                 .WithMany(a => a.Orders)
-                .HasForeignKey(a => a.PersonID);
+                .HasForeignKey(a => a.PersonID)
+                .WillCascadeOnDelete(false);
 
             HasRequired(a => a.Shipper)
                 .WithMany(a => a.Orders)
-                .HasForeignKey(a => a.ShipperID);
-
-
-
+                .HasForeignKey(a => a.ShipperID)
+                .WillCascadeOnDelete(false);
         }
     }
 }

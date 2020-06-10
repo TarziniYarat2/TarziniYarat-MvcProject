@@ -57,3 +57,14 @@ C:\Users\tugba\Source\Repos\TarziniYarat-MvcProject.Son\TarziniYarat.Core\obj\De
 C:\Users\tugba\Source\Repos\TarziniYarat-MvcProject.Son\TarziniYarat.Core\obj\Debug\TarziniYarat.Core.csproj.CopyComplete
 C:\Users\tugba\Source\Repos\TarziniYarat-MvcProject.Son\TarziniYarat.Core\obj\Debug\TarziniYarat.Core.dll
 C:\Users\tugba\Source\Repos\TarziniYarat-MvcProject.Son\TarziniYarat.Core\obj\Debug\TarziniYarat.Core.pdb
+C:\Users\tugba\Source\Repos\TarziniYarat-MvcProject.Guncel\TarziniYarat.Core\bin\Debug\TarziniYarat.Core.dll.config
+C:\Users\tugba\Source\Repos\TarziniYarat-MvcProject.Guncel\TarziniYarat.Core\bin\Debug\TarziniYarat.Core.dll
+C:\Users\tugba\Source\Repos\TarziniYarat-MvcProject.Guncel\TarziniYarat.Core\bin\Debug\TarziniYarat.Core.pdb
+C:\Users\tugba\Source\Repos\TarziniYarat-MvcProject.Guncel\TarziniYarat.Core\bin\Debug\EntityFramework.dll
+C:\Users\tugba\Source\Repos\TarziniYarat-MvcProject.Guncel\TarziniYarat.Core\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\tugba\Source\Repos\TarziniYarat-MvcProject.Guncel\TarziniYarat.Core\bin\Debug\EntityFramework.xml
+C:\Users\tugba\Source\Repos\TarziniYarat-MvcProject.Guncel\TarziniYarat.Core\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\tugba\Source\Repos\TarziniYarat-MvcProject.Guncel\TarziniYarat.Core\obj\Debug\TarziniYarat.Core.csproj.CoreCompileInputs.cache
+C:\Users\tugba\Source\Repos\TarziniYarat-MvcProject.Guncel\TarziniYarat.Core\obj\Debug\TarziniYarat.Core.csproj.CopyComplete
+C:\Users\tugba\Source\Repos\TarziniYarat-MvcProject.Guncel\TarziniYarat.Core\obj\Debug\TarziniYarat.Core.dll
+C:\Users\tugba\Source\Repos\TarziniYarat-MvcProject.Guncel\TarziniYarat.Core\obj\Debug\TarziniYarat.Core.pdb

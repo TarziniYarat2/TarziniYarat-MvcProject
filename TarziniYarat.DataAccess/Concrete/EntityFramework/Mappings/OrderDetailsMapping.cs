@@ -18,11 +18,13 @@ namespace TarziniYarat.DataAccess.Concrete.EntityFramework.Mappings
 
             HasRequired(a => a.Order)
                .WithMany(a => a.OrderDetails)
-               .HasForeignKey(a => a.OrderID);
+               .HasForeignKey(a => a.OrderID)
+                  .WillCascadeOnDelete(false);
 
             HasRequired(a => a.Product)
                .WithMany(a => a.OrderDetails)
-               .HasForeignKey(a => a.ProductID);
+               .HasForeignKey(a => a.ProductID)
+               .WillCascadeOnDelete(false);
         }
     }
 }
