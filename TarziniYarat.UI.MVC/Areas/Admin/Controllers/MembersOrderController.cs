@@ -26,6 +26,19 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
             
             return View(_productService.GetAll());
         }
+        public ActionResult GetProduct(int id)
+        {
+            var product = _productService.GetByID(id);
+            return View("GetProduct", product);
+        }
+
+        public ActionResult UpdateProduct(Product product)
+        {
+            var p = _productService.GetByID(product.ProductID);
+            p.UnitsInStock = product.UnitsInStock;
+            return RedirectToAction("StokTraking");
+        }
+
 
         //public ActionResult ShipperProduct(int? id)
         //{
@@ -49,7 +62,7 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
         //    }
         //    else
         //    {
-        //        return RedirectToAction("ShipperList","AdminProcess");
+        //        return RedirectToAction("ShipperList", "AdminProcess");
         //    }
         //}
     }

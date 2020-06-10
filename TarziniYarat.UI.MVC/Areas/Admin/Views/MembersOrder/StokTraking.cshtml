@@ -27,30 +27,28 @@
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProductName, new { @class = "btnName" })
-            </td>
-            <td>
-                @if (item.UnitsInStock < 100)
-                {
-                    <span style="color:red">Stok durumu kritik seviyededir.</span>
-                }
-                else
-                {
-                    <span style="color:lawngreen">Stok durumu iyi seviyededir.</span>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.ProductName, new { @class = "btnName" })
+    </td>
+    <td>
+        @if (item.UnitsInStock < 100)
+        {
+            <span style="color:red">Stok durumu kritik seviyededir.</span>
+        }
+        else
+        {
+            <span style="color:lawngreen">Stok durumu iyi seviyededir.</span>
 
-                }
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UnitsInStock)
-            </td>
-            <td>
-                <button href="#" class="btn btn-success btnUpdate" dataID="@item.ProductID">
-                    Güncelle
-                </button>
-            </td>
-        </tr>
+        }
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.UnitsInStock)
+    </td>
+    <td>
+        <a href="/Admin/MembersOrder/GetProduct/@item.ProductID" class="btn btn-success">Güncelle</a>
+    </td>
+</tr>
     }
 
 </table>
@@ -59,21 +57,7 @@
 <hr />
 
 <div>
-    <h4>Stok Düzenle</h4>
-</div>
-<div>
-    <form id="UpdateBrand">
-
-        <div class="form-group">
-            <div class="input-group">
-                <input class="form-control" type="text" name="stokName" id="stokName" placeholder="Stok Miktarı Giriniz." />
-            </div>
-        </div>
-    </form>
-    <div class="form-group">
-        <button class="btn btn-success form-control" id="btnUpdateChange" type="submit">Değişiklikleri Kaydet</button>
-    </div>
-</div>
+   
 <br />
 @Html.ActionLink("Ürün Ekleme Sayfasına Git", "CreateProduct","AdminProcess")
 
@@ -83,49 +67,49 @@
 
         //Güncelleme
 
-        $("#btnUpdateChange").click(function () {
-            var productID = $(this).attr("dataID");
-            var product = {
-                "UnitsInStock": $("#stokName").val(),
-                "ProductID": productID,
-            }
-            $.ajax({
-                url: "/AdminProcess/UpdateStok/",
-                type: "POST",
-                data: product,
-                success: function (resp) {
-                    if (resp == "ok") {
-                        alert("Güncelleme Başarılı")
-                        window.location.reload();
-                    }
+        //$("#btnUpdateChange").click(function () {
+        //    var productID = $(this).attr("dataID");
+        //    var product = {
+        //        "UnitsInStock": $("#stokName").val(),
+        //        "ProductID": productID,
+        //    }
+        //    $.ajax({
+        //        url: "/AdminProcess/UpdateStok/",
+        //        type: "POST",
+        //        data: product,
+        //        success: function (resp) {
+        //            if (resp == "ok") {
+        //                alert("Güncelleme Başarılı")
+        //                window.location.reload();
+        //            }
 
-                },
-                onerror: function (err) {
-                    alert("İstek başarısız.")
-                    console.log(err);
-                }
-            })
-        })
+        //        },
+        //        onerror: function (err) {
+        //            alert("İstek başarısız.")
+        //            console.log(err);
+        //        }
+        //    })
+        //})
 
-        //Güncellenecek verilerin gelmesi
+        ////Güncellenecek verilerin gelmesi
 
-        $(".btnUpdate").click(function () {
-            var productID = $(this).attr("dataID");
-            $.ajax({
-                url: "/AdminProcess/GetProduct/" + productID,
-                type: "POST",
-                success: function (resp) {
-                    if (resp != null) {
-                        $("#stokName").val(resp.UnitsInStock);
-                        $("#btnUpdateChange").attr("dataID", productID);
-                    }
-                },
-                onerror: function (err) {
-                    alert("Hata Oluştu.")
-                    console.log(err);
-                }
-            })
-        })
+        //$(".btnUpdate").click(function () {
+        //    var productID = $(this).attr("dataID");
+        //    $.ajax({
+        //        url: "/AdminProcess/GetProduct/" + productID,
+        //        type: "POST",
+        //        success: function (resp) {
+        //            if (resp != null) {
+        //                $("#stokName").val(resp.UnitsInStock);
+        //                $("#btnUpdateChange").attr("dataID", productID);
+        //            }
+        //        },
+        //        onerror: function (err) {
+        //            alert("Hata Oluştu.")
+        //            console.log(err);
+        //        }
+        //    })
+        //})
 
        
     </script>
