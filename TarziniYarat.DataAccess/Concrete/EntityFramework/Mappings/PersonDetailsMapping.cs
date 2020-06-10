@@ -32,10 +32,6 @@ namespace TarziniYarat.DataAccess.Concrete.EntityFramework.Mappings
 
             HasRequired(a => a.Person)
                 .WithOptional(a => a.PersonDetails);
-                
-
-
-
         }
     }
 }

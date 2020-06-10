@@ -41,11 +41,13 @@ namespace TarziniYarat.DataAccess.Concrete.EntityFramework.Mappings
 
             HasMany(a => a.Likes)
                 .WithRequired(a => a.Person)
-                .HasForeignKey(a => a.PersonID);
+                .HasForeignKey(a => a.PersonID)
+                 .WillCascadeOnDelete(false);
 
             HasMany(a => a.Orders)
                 .WithRequired(a => a.Person)
-                .HasForeignKey(a => a.PersonID);
+                .HasForeignKey(a => a.PersonID)
+                .WillCascadeOnDelete(false);
 
                
         }

@@ -20,7 +20,6 @@ namespace TarziniYarat.Model
         public int ProductID { get; set; }
         public int CategoryID { get; set; }
         public int BrandID { get; set; }
-        public int? ShipperID { get; set; }
         public string ProductName { get; set; }
         public byte[] Photo { get; set; }
         public string Description { get; set; }
@@ -35,7 +34,6 @@ namespace TarziniYarat.Model
         //Navigation prop
         public Category Category { get; set; }
         public Brand Brand { get; set; }
-        public Shipper Shipper { get; set; }
         public ICollection<OrderDetails> OrderDetails { get; set; }
         public ICollection<Comment> Comments { get; set; }
     }

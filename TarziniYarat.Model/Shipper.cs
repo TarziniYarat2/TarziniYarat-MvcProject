@@ -19,6 +19,5 @@ namespace TarziniYarat.Model
 
         //Navigation prop
         public ICollection<Order> Orders { get; set; }
-        public ICollection<Product> Products { get; set; }
     }
 }
