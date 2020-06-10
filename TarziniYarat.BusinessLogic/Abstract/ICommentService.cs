@@ -9,5 +9,6 @@ namespace TarziniYarat.BusinessLogic.Abstract
 {
     public interface ICommentService:IBaseService<Comment>
     {
+        List<Comment> GetAllProductId(int? productID);
     }
 }

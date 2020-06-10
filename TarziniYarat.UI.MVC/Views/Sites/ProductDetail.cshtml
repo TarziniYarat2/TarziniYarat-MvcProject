@@ -67,14 +67,6 @@
                         <label for="qty">Adet:</label>
                         @* Ürün miktarı (alınacak) *@
                         <input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:" class="input-text qty">
-                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
-                                class="increase items-count" type="button">
-                            <i class="lnr lnr-chevron-up"></i>
-                        </button>
-                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
-                                class="reduced items-count" type="button">
-                            <i class="lnr lnr-chevron-down"></i>
-                        </button>
                     </div>
                     <div class="card_area">
                         <a href="javascript:void(0)" data-productID="@Model.ProductID" class="addCart btn btn-primary">Sepete Ekle</a>
@@ -101,80 +93,48 @@
                         <div class="comment_list">
                             <div class="review_item">
                                 <div class="media">
-                                    <div class="d-flex">
-                                        <img src="~/Assets/img/review-1.png" />
-                                    </div>
-                                    <div class="media-body">
-                                        @* Yorum yapanın adı *@
-                                        <h4>Blake Ruiz</h4>
-                                        @* yorum tarihi *@
-                                        <h5>12th Feb, 2017 at 05:56 pm</h5>
-                                        <a class="reply_btn" href="#">Cevapla</a>
-                                    </div>
+                                    @*<div class="d-flex">
+                                            <img src="~/Assets/img/review-1.png" />
+                                        </div>*@
+                                    @foreach (ProductComment item in ViewBag.Comment)
+                                    {
+                                        <div class="media-body">
+                                            @* Yorum yapanın adı *@
+                                            <h4>@item.UserName</h4>
+                                            @* yorum tarihi *@
+                                            <h5>@item.CreatedDate</h5>
+                                            <a class="reply_btn" href="#">Cevapla</a>
+                                        </div>
+                                        <div class="media-body">
+                                            <p>@item.Content</p>
+                                        </div>
+
+                                    }
                                 </div>
-                                @* Yorum kısmı *@
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                </p>
-                            </div>
-                            <div class="review_item reply">
-                                <div class="media">
-                                    <div class="d-flex">
-                                        <img src="~/Assets/img/review-2.png" />
-                                    </div>
-                                    <div class="media-body">
-                                        <h4>Blake Ruiz</h4>
-                                        <h5>12th Feb, 2017 at 05:56 pm</h5>
-                                        <a class="reply_btn" href="#">Reply</a>
-                                    </div>
-                                </div>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                </p>
-                            </div>
-                            <div class="review_item">
-                                <div class="media">
-                                    <div class="d-flex">
-                                        <img src="~/Assets/img/review-3.png" />
-                                    </div>
-                                    <div class="media-body">
-                                        <h4>Blake Ruiz</h4>
-                                        <h5>12th Feb, 2017 at 05:56 pm</h5>
-                                        <a class="reply_btn" href="#">Reply</a>
-                                    </div>
-                                </div>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                </p>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="review_box">
-                            <h4>Yorum Gönder</h4>
-                            <form class="row contact_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
-                                @*<div class="col-md-12">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" id="name" name="name" placeholder="Kullanıcı adı">
-                                        </div>
-                                    </div>*@
+                            <h4>Yorum Yap</h4>
+                            @using (Html.BeginForm("AddComment", "Sites", FormMethod.Post))
+                            {
+
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <input type="email" class="form-control" id="email" name="email" placeholder="Kullanıcı Adı">
+                                        <input type="email" class="form-control" id="email" name="email" placeholder="Mail">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <textarea class="form-control" name="message" id="message" rows="1" placeholder="Yorumunuz"></textarea>
+                                        <textarea class="form-control" name="message" id="message" rows="1" placeholder="Yorum"></textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-12 text-right">
-                                    <button type="submit" value="submit" class="btn submit_btn">Gönder</button>
+                                    @Html.ActionLink("Gönder", "ProductDetail", new { id = Model.ProductID })
+                                    @*<button type="submit" value="submit" class="btn submit_btn">Gönder</button>*@
                                 </div>
-                            </form>
+                            }
                         </div>
                     </div>
                 </div>

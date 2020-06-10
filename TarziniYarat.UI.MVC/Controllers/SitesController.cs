@@ -21,13 +21,15 @@ namespace TarziniYarat.UI.MVC.Controllers
         IProductService _productService;
         ICategoryService _categoryService;
         IBrandService _brandService;
-        public SitesController(IPersonService personService, IRoleService roleService, IProductService productService, ICategoryService categoryService, IBrandService brandService)
+        ICommentService _commentService;
+        public SitesController(IPersonService personService, IRoleService roleService, IProductService productService, ICategoryService categoryService, IBrandService brandService, ICommentService commentService)
         {
             _personService = personService;
             _roleService = roleService;
             _productService = productService;
             _categoryService = categoryService;
             _brandService = brandService;
+            _commentService = commentService;
         }
 
         public ActionResult HomePage()
@@ -88,13 +90,27 @@ namespace TarziniYarat.UI.MVC.Controllers
 
         public ActionResult ProductDetail(int id)
         {
-            //ViewBag.Product = _productService.GetByID(id);
+            List<ProductComment> commentProduct = new List<ProductComment>();
+            List<Comment> comments = _commentService.GetAllProductId(id);
+            foreach (var item in comments)
+            {
+                ProductComment productComment = new ProductComment()
+                {
+                    Content = item.Content,
+                    CreatedDate = item.CreatedDate,
+                    UserName = _personService.GetByID(item.PersonID).Username
+                };
+                commentProduct.Add(productComment);
+
+            }
+
+            ViewBag.Comment = commentProduct;
+            
             return View(_productService.GetByID(id));
         }
 
         public ActionResult Profil(int id) //kullanıcı profil sayfası yapıldı.
-        {
-            return View(_personService.GetByID(id));
+        {            return View(_personService.GetByID(id));
         }
 
         [HttpPost]
@@ -109,8 +125,6 @@ namespace TarziniYarat.UI.MVC.Controllers
             _personService.Update(person);
             return View();
         }
-
-
 
         public ActionResult Combine()
         {
@@ -138,12 +152,31 @@ namespace TarziniYarat.UI.MVC.Controllers
         }
         public ActionResult Login()
         {
+            if (Request.Cookies["login"] != null)
+            {
+                HttpCookie login = Request.Cookies["login"];
+                LoginViewModel user = new LoginViewModel();
+                user.UserName = login["mail"];
+                user.Password = login["sifre"];
+
+                return View(user);
+            }
             return View();
         }
 
         [HttpPost]
         public ActionResult Login(LoginViewModel login)
         {
+            if (login.RememberMe)
+            {
+                HttpCookie loginCookie = new HttpCookie("login");
+                loginCookie.Values.Add("mail", login.UserName);
+                loginCookie.Values.Add("sifre", login.Password);
+                loginCookie.Expires = DateTime.Now.AddDays(15);
+
+                Response.Cookies.Add(loginCookie);
+            }
+
             List<Person> persons = _personService.GetAll();
             foreach (var item in persons)
             {

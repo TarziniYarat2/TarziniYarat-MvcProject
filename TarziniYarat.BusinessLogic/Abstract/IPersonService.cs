@@ -9,5 +9,6 @@ namespace TarziniYarat.BusinessLogic.Abstract
 {
     public interface IPersonService:IBaseService<Person>
     {
+       
     }
 }

@@ -34,6 +34,11 @@ namespace TarziniYarat.BusinessLogic.Concrete
             return _commentDAL.GetAll().ToList();
         }
 
+        public List<Comment> GetAllProductId(int? productID)
+        {
+            return _commentDAL.GetAll(a => a.ProductID == productID).ToList();
+        }
+
         public Comment GetByID(int entityID)
         {
             return _commentDAL.Get(a => a.CommentID == entityID);

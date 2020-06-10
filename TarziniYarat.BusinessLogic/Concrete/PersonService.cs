@@ -92,6 +92,8 @@ namespace TarziniYarat.BusinessLogic.Concrete
             return _personDAL.Get(a => a.PersonID == entityID);
         }
 
+   
+
         public bool Update(Person entity)
         {
             return _personDAL.Update(entity) > 0;
