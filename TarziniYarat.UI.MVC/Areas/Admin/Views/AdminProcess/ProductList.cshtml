@@ -93,11 +93,9 @@
             Aktif/Pasif
         </button>
     </td>
+    <td>@Html.ActionLink("Sil", "DeleteProduct", new { id = item.ProductID }, new { @class = "btn btn-danger", onclick = "return confirm('Gerçekten silmek istiyor musunuz?')" })</td>
+
     <td>
-        <button href="#" class="btn btn-danger  btnDelete" dataproductID="@item.ProductID">
-            Sil
-        </button>
-    </td>
     <td>
         @Html.DisplayFor(modelItem => item.Photo, new { @class = "btnName" })
 

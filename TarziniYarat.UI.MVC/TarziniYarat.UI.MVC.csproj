@@ -2294,6 +2294,9 @@
     <Content Include="Areas\Admin\Views\MembersOrder\StokTraking.cshtml" />
     <Content Include="Areas\Admin\Views\AdminProcess\UpdateProduct.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\AdminUpdate.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminProcess\GetBrand.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminProcess\GetCategory.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminProcess\GetShipper.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\Shared\_LayoutSites.cshtml" />
     <Content Include="Views\Sites\Shop.cshtml" />

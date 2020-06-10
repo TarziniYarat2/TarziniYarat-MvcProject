@@ -43,21 +43,18 @@
     <td>
         @Html.DisplayFor(modelItem => item.CreatedDate)
     </td>
+
     <td>
-        <button href="#" class="btn btn-success btnUpdate" dataID="@item.BrandID">
-            Güncelle
-        </button>
+        <a href="/Admin/AdminProcess/GetBrand/@item.BrandID" class="btn btn-success">Güncelle</a>
     </td>
+
     <td>
         <button href="#" name="brandActive" class="btn btn-primary  btnActivate" data="@item.BrandID">
             Aktif/Pasif
         </button>
     </td>
-    <td>
-        <button href="#"  class="btn btn-danger  btnDelete" dataBrandID="@item.BrandID">
-            Sil
-        </button>
-    </td>
+    <td>@Html.ActionLink("Sil", "DeleteBrand", new { id = item.BrandID }, new { @class = "btn btn-danger", onclick = "return confirm('Gerçekten silmek istiyor musunuz?')" })</td>
+
     <td>
         @Html.ActionLink("Ürünlerine Git", "ProductList", new { brandID = item.BrandID }, new { @class = "btn btn-warning" })
     </td>
@@ -69,22 +66,7 @@
 <br />
 <hr />
 
-<div>
-    <h4>Marka Düzenle</h4>
-</div>
-<div>
-    <form id="UpdateBrand">
 
-        <div class="form-group">
-            <div class="input-group">
-                <input class="form-control" type="text" name="brandName" id="brandName" placeholder="Marka Adını Giriniz." />
-            </div>
-        </div>
-    </form>
-    <div class="form-group">
-        <button class="btn btn-success form-control" id="btnUpdateChange" type="submit">Değişiklikleri Kaydet</button>
-    </div>
-</div>
 <br />
 @Html.ActionLink("Marka Ekleme Sayfasına Git", "AddBrand")
 
@@ -92,51 +74,51 @@
 
     <script>
 
-        //Güncelleme
+        ////Güncelleme
 
-        $("#btnUpdateChange").click(function () {
-            var brandId = $(this).attr("dataID");
-            var brand = {
-                "CompanyName": $("#brandName").val(),
-                "BrandID": brandId,
-            }
-            $.ajax({
-                url: "/AdminProcess/UpdateBrand/",
-                type: "POST",
-                data: brand,
-                success: function (resp) {
-                    if (resp == "ok") {
-                        alert("Güncelleme Başarılı")
-                        window.location.reload();
-                    }
+        //$("#btnUpdateChange").click(function () {
+        //    var brandId = $(this).attr("dataID");
+        //    var brand = {
+        //        "CompanyName": $("#brandName").val(),
+        //        "BrandID": brandId,
+        //    }
+        //    $.ajax({
+        //        url: "/AdminProcess/UpdateBrand/",
+        //        type: "POST",
+        //        data: brand,
+        //        success: function (resp) {
+        //            if (resp == "ok") {
+        //                alert("Güncelleme Başarılı")
+        //                window.location.reload();
+        //            }
 
-                },
-                onerror: function (err) {
-                    alert("İstek başarısız.")
-                    console.log(err);
-                }
-            })
-        })
+        //        },
+        //        onerror: function (err) {
+        //            alert("İstek başarısız.")
+        //            console.log(err);
+        //        }
+        //    })
+        //})
 
-        //Güncellenecek verilerin gelmesi
+        ////Güncellenecek verilerin gelmesi
 
-        $(".btnUpdate").click(function () {
-            var brandId = $(this).attr("dataID");
-            $.ajax({
-                url: "/AdminProcess/GetBrand/" + brandId,
-                type: "POST",
-                success: function (resp) {
-                    if (resp != null) {
-                        $("#brandName").val(resp.CompanyName);
-                        $("#btnUpdateChange").attr("dataID", brandId);
-                    }
-                },
-                onerror: function (err) {
-                    alert("Hata Oluştu.")
-                    console.log(err);
-                }
-            })
-        })
+        //$(".btnUpdate").click(function () {
+        //    var brandId = $(this).attr("dataID");
+        //    $.ajax({
+        //        url: "/AdminProcess/GetBrand/" + brandId,
+        //        type: "POST",
+        //        success: function (resp) {
+        //            if (resp != null) {
+        //                $("#brandName").val(resp.CompanyName);
+        //                $("#btnUpdateChange").attr("dataID", brandId);
+        //            }
+        //        },
+        //        onerror: function (err) {
+        //            alert("Hata Oluştu.")
+        //            console.log(err);
+        //        }
+        //    })
+        //})
 
         //Pasifleştirme
 

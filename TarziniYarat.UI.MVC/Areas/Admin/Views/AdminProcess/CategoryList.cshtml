@@ -52,20 +52,16 @@
         @Html.DisplayFor(modelItem => item.CreatedDate)
     </td>
     <td>
-        <button href="#" class="btn btn-primary btnUpdate" dataID="@item.CategoryID">
-            Güncelle
-        </button>
+        <a href="/Admin/AdminProcess/GetCategory/@item.CategoryID" class="btn btn-success">Güncelle</a>
     </td>
     <td>
         <button href="#" name="categoryActive" class="btn btn-primary  btnActivate" data="@item.CategoryID">
             Aktif/Pasif
         </button>
     </td>
-    <td>
-        <button href="#" class="btn btn-danger btnDelete" dataCategoryID="@item.CategoryID">
-            Sil
-        </button>
-    </td>
+   
+    <td>@Html.ActionLink("Sil", "DeleteCategory", new { id = item.CategoryID }, new { @class = "btn btn-danger", onclick = "return confirm('Gerçekten silmek istiyor musunuz?')" })</td>
+   
     <td>
         @Html.ActionLink("Ürünlerine Git", "ProductList", new { brandID = item.CategoryID }, new { @class = "btn btn-success" })
     </td>
@@ -73,27 +69,8 @@
     }
 </table>
 <br />
-<div>
-    <h4>Kategori Düzenle</h4>
-</div>
-<div>
-    <form id="UpdateCategory">
 
-        <div class="form-group">
-            <div class="input-group">
-                <input class="form-control" type="text" name="categoryName" id="categoryName" placeholder="Kategori Adını Giriniz." />
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="input-group">
-                <input class="form-control" type="text" name="categoryDescription" id="categoryDescription" placeholder="Kategori Açıklamasını Giriniz." />
-            </div>
-        </div>
-    </form>
-    <div class="form-group">
-        <button class="btn btn-success form-control" id="btnUpdateChange" type="submit">Değişiklikleri Kaydet</button>
-    </div>
-</div>
+
 <br />
 @Html.ActionLink("Kategori Ekleme Sayfasına Git", "AddCategory")
 
@@ -102,49 +79,49 @@
     <script>
 
 
-        $("#btnUpdateChange").click(function () {
-            var categoryID = $(this).attr("dataID");
-            var category = {
-                "CategoryName": $("#categoryName").val(),
-                "Description": $("#categoryDescription").val(),
-                "CategoryID": categoryID,
-            }
-            $.ajax({
-                url: "/AdminProcess/UpdateCategory/",
-                type: "POST",
-                data: category,
-                success: function (resp) {
-                    if (resp == "ok") {
-                        alert("Güncelleme Başarılı")
-                        window.location.reload();
-                    }
+        //$("#btnUpdateChange").click(function () {
+        //    var categoryID = $(this).attr("dataID");
+        //    var category = {
+        //        "CategoryName": $("#categoryName").val(),
+        //        "Description": $("#categoryDescription").val(),
+        //        "CategoryID": categoryID,
+        //    }
+        //    $.ajax({
+        //        url: "/AdminProcess/UpdateCategory/",
+        //        type: "POST",
+        //        data: category,
+        //        success: function (resp) {
+        //            if (resp == "ok") {
+        //                alert("Güncelleme Başarılı")
+        //                window.location.reload();
+        //            }
 
-                },
-                onerror: function (err) {
-                    alert("İstek başarısız.")
-                    console.log(err);
-                }
-            })
-        })
+        //        },
+        //        onerror: function (err) {
+        //            alert("İstek başarısız.")
+        //            console.log(err);
+        //        }
+        //    })
+        //})
 
-        $(".btnUpdate").click(function () {
-            var categoryID = $(this).attr("dataID");
-            $.ajax({
-                url: "/AdminProcess/GetCategory/" + categoryID,
-                type: "POST",
-                success: function (resp) {
-                    if (resp != null) {
-                        $("#categoryName").val(resp.CategoryName);
-                        $("#categoryDescription").val(resp.Description);
-                        $("#btnUpdateChange").attr("dataID", categoryID);
-                    }
-                },
-                onerror: function (err) {
-                    alert("Hata Oluştu.")
-                    console.log(err);
-                }
-            })
-        })
+        //$(".btnUpdate").click(function () {
+        //    var categoryID = $(this).attr("dataID");
+        //    $.ajax({
+        //        url: "/AdminProcess/GetCategory/" + categoryID,
+        //        type: "POST",
+        //        success: function (resp) {
+        //            if (resp != null) {
+        //                $("#categoryName").val(resp.CategoryName);
+        //                $("#categoryDescription").val(resp.Description);
+        //                $("#btnUpdateChange").attr("dataID", categoryID);
+        //            }
+        //        },
+        //        onerror: function (err) {
+        //            alert("Hata Oluştu.")
+        //            console.log(err);
+        //        }
+        //    })
+        //})
 
         //Pasifleştirme
 

@@ -18,8 +18,7 @@
             <th>Kullanıcı Rolü</th>
             <th>Aktif/Pasif</th>
             <th colspan="2">Rolü Değiştir</th>
-            <th>Güncelle</th>
-            <th>Sil</th>
+
         </tr>
         @foreach (TarziniYarat.Model.Person item in Model)
         {
@@ -34,8 +33,7 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td></td>
-                    <td></td>
+
                 </tr>
             }
             else
@@ -60,16 +58,7 @@
                             Modelist Yap
                         </button>
                     </td>
-                    <td>
-                        <button href="#" class="btn btn-success btnUpdate" type="submit" data="@item.PersonID">
-                            Güncelle
-                        </button>
-                    </td>
-                    <td>
-                        <button href="#" class="btn btn-danger btnDelete" type="submit" dataPersonID="@item.PersonID">
-                            Sil
-                        </button>
-                    </td>
+                   
                 </tr>
             }
         }

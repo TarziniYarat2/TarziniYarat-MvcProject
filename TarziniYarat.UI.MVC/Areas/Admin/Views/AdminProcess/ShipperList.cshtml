@@ -53,48 +53,24 @@
         @Html.DisplayFor(modelItem => item.CreatedDate)
     </td>
     <td>
-        <button href="#" class="btn btn-success btnUpdate" dataID="@item.ShipperID">
-            Güncelle
-        </button>
+        <a href="/Admin/AdminProcess/GetShipper/@item.ShipperID" class="btn btn-success">Güncelle</a>
     </td>
     <td>
         <button href="#" name="brandActive" class="btn btn-primary  btnActivate" data="@item.ShipperID">
             Aktif/Pasif
         </button>
     </td>
+    <td>@Html.ActionLink("Sil", "DeleteShipper", new { id = item.ShipperID }, new { @class = "btn btn-danger", onclick = "return confirm('Gerçekten silmek istiyor musunuz?')" })</td>
+
     <td>
-        <button href="#" class="btn btn-danger btnDelete" dataShipperID="@item.ShipperID">
-            Sil
-        </button>
-    </td>
     <td>
-        @Html.ActionLink("Kargolanacak Ürünlere Git", "ShipperProduct","MembersOrder", new { id = item.ShipperID }, new { @class = "btn btn-warning" })
+        @Html.ActionLink("Kargolanacak Ürünlere Git", "ShipperProduct", "MembersOrder", new { id = item.ShipperID }, new { @class = "btn btn-warning" })
     </td>
 </tr>
     }
 </table>
 <br />
-<div>
-    <h4>Kargo Şirketi Bilgilerini Düzenle</h4>
-</div>
-<div>
-    <form id="UpdateShipper">
 
-        <div class="form-group">
-            <div class="input-group">
-                <input class="form-control" name="companyName" id="companyName" placeholder="Şirket Adını Giriniz." />
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="input-group">
-                <input class="form-control" type="number" name="phone" id="phone" placeholder="Telefon Numarası Giriniz." />
-            </div>
-        </div>
-    </form>
-    <div class="form-group">
-        <button class="btn btn-success form-control" id="btnUpdateChange" type="submit">Değişiklikleri Kaydet</button>
-    </div>
-</div>
 <br />
 @Html.ActionLink("Kargo Şirketi Ekleme Sayfasına Git", "AddShipper")
 
@@ -104,51 +80,51 @@
 
         //Güncelleme İşlemi
 
-        $("#btnUpdateChange").click(function () {
-            var shipperID = $(this).attr("dataID");
-            var shipper = {
-                "CompanyName": $("#companyName").val(),
-                "Phone": $("#phone").val(),
-                "ShipperID": shipperID,
-            }
-            $.ajax({
-                url: "/AdminProcess/UpdateShipper/",
-                type: "POST",
-                data: shipper,
-                success: function (resp) {
-                    if (resp == "ok") {
-                        alert("Güncelleme Başarılı")
-                        window.location.reload();
-                    }
+        //$("#btnUpdateChange").click(function () {
+        //    var shipperID = $(this).attr("dataID");
+        //    var shipper = {
+        //        "CompanyName": $("#companyName").val(),
+        //        "Phone": $("#phone").val(),
+        //        "ShipperID": shipperID,
+        //    }
+        //    $.ajax({
+        //        url: "/AdminProcess/UpdateShipper/",
+        //        type: "POST",
+        //        data: shipper,
+        //        success: function (resp) {
+        //            if (resp == "ok") {
+        //                alert("Güncelleme Başarılı")
+        //                window.location.reload();
+        //            }
 
-                },
-                onerror: function (err) {
-                    alert("İstek başarısız.")
-                    console.log(err);
-                }
-            })
-        })
+        //        },
+        //        onerror: function (err) {
+        //            alert("İstek başarısız.")
+        //            console.log(err);
+        //        }
+        //    })
+        //})
 
-        //Güncellenecek Verilerin Getirilmesi
+        ////Güncellenecek Verilerin Getirilmesi
 
-        $(".btnUpdate").click(function () {
-            var shipperID = $(this).attr("dataID");
-            $.ajax({
-                url: "/AdminProcess/GetShipper/" + shipperID,
-                type: "POST",
-                success: function (resp) {
-                    if (resp != null) {
-                        $("#companyName").val(resp.CompanyName);
-                        $("#phone").val(resp.Phone);
-                        $("#btnUpdateChange").attr("dataID", shipperID);
-                    }
-                },
-                onerror: function (err) {
-                    alert("Hata Oluştu.")
-                    console.log(err);
-                }
-            })
-        })
+        //$(".btnUpdate").click(function () {
+        //    var shipperID = $(this).attr("dataID");
+        //    $.ajax({
+        //        url: "/AdminProcess/GetShipper/" + shipperID,
+        //        type: "POST",
+        //        success: function (resp) {
+        //            if (resp != null) {
+        //                $("#companyName").val(resp.CompanyName);
+        //                $("#phone").val(resp.Phone);
+        //                $("#btnUpdateChange").attr("dataID", shipperID);
+        //            }
+        //        },
+        //        onerror: function (err) {
+        //            alert("Hata Oluştu.")
+        //            console.log(err);
+        //        }
+        //    })
+        //})
 
 
         //Pasifleştirme

@@ -136,19 +136,19 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
             return Json("ok", JsonRequestBehavior.AllowGet);
         }
 
-        [HttpPost]
-        public JsonResult DeleteProduct(int id)
-        {
-            try
-            {
-                _productService.Delete(id);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-            return Json("ok", JsonRequestBehavior.AllowGet);
-        }
+        //[HttpPost]
+        //public JsonResult DeleteProduct(int productID)
+        //{
+        //    try
+        //    {
+        //        _productService.Delete(productID);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw new Exception(ex.Message);
+        //    }
+        //    return Json("ok", JsonRequestBehavior.AllowGet);
+        //}
 
         public JsonResult UpdateStok(Product p)
         {
@@ -194,9 +194,9 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
             return Json("ok", JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult PersonUyeChange(int id)
+        public JsonResult PersonUyeChange(int personID)
         {
-            Person person = _personService.GetByID(id);
+            Person person = _personService.GetByID(personID);
             if (person.RoleID == 4)
             {
                 person.RoleID = 2;
@@ -209,9 +209,9 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
             return Json("ok", JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult PersonModelistChange(int id)
+        public JsonResult PersonModelistChange(int personID)
         {
-            Person person = _personService.GetByID(id);
+            Person person = _personService.GetByID(personID);
             if (person.RoleID == 4)
             {
                 person.RoleID = 3;
@@ -223,6 +223,7 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
             _personService.Update(person);
             return Json("ok", JsonRequestBehavior.AllowGet);
         }
+
 
         public ActionResult BrandList()
         {
@@ -241,44 +242,44 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
             return RedirectToAction("BrandList");
         }
 
-        [HttpPost]
-        public JsonResult UpdateBrand(Brand brd)
-        {
-            try
-            {
-                Brand brand = _brandService.GetByID(brd.BrandID);
-                brand.CompanyName = brd.CompanyName;
-                _brandService.Update(brand);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-            return Json("ok", JsonRequestBehavior.AllowGet);
-        }
+        //[HttpPost]
+        //public JsonResult UpdateBrand(Brand brd)
+        //{
+        //    try
+        //    {
+        //        Brand brand = _brandService.GetByID(brd.BrandID);
+        //        brand.CompanyName = brd.CompanyName;
+        //        _brandService.Update(brand);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw new Exception(ex.Message);
+        //    }
+        //    return Json("ok", JsonRequestBehavior.AllowGet);
+        //}
 
-        [HttpPost]
-        public JsonResult GetBrand(int id)
-        {
-            Brand brand = _brandService.GetByID(id);
+        //[HttpPost]
+        //public JsonResult GetBrand(int id)
+        //{
+        //    Brand brand = _brandService.GetByID(id);
 
-            return Json(brand, JsonRequestBehavior.AllowGet);
+        //    return Json(brand, JsonRequestBehavior.AllowGet);
 
-        }
+        //}
 
-        [HttpPost]
-        public JsonResult DeleteBrand(int id)
-        {
-            try
-            {
-                _brandService.Delete(id);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-            return Json("ok", JsonRequestBehavior.AllowGet);
-        }
+        //[HttpPost]
+        //public JsonResult DeleteBrand(int id)
+        //{
+        //    try
+        //    {
+        //        _brandService.Delete(id);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw new Exception(ex.Message);
+        //    }
+        //    return Json("ok", JsonRequestBehavior.AllowGet);
+        //}
 
         private void GetAllBrandsToDLL()
         {
@@ -290,9 +291,9 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
             ViewBag.Brands = brands;
         }
 
-        public ActionResult ActiveBrand(int id)
+        public ActionResult ActiveBrand(int brandID)
         {
-            Brand brand = _brandService.GetByID(id);
+            Brand brand = _brandService.GetByID(brandID);
             if (brand.IsActive == true)
             {
                 brand.IsActive = false;
@@ -306,6 +307,25 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
             return Json("ok", JsonRequestBehavior.AllowGet);
 
         }
+
+        public ActionResult GetBrand(int id)
+        {
+            var brand = _brandService.GetByID(id);
+            return View("GetBrand", brand);
+        }
+
+        public ActionResult UpdateBrand(Brand brand)
+        {
+            var b = _brandService.GetByID(brand.BrandID);
+            b.CompanyName = brand.CompanyName;
+            return RedirectToAction("BrandList");
+        }
+
+
+
+
+
+
 
         // TODO: Body enumı alınıp ViewBag e aktarıldı.
         private void GetBodyFromEnumToDLL()
@@ -341,13 +361,13 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
             ViewBag.Categories = categories;
         }
 
-        [HttpPost]
-        public JsonResult GetCategory(int id)
-        {
-            Category category = _categoryService.GetByID(id);
+        //[HttpPost]
+        //public JsonResult GetCategory(int id)
+        //{
+        //    Category category = _categoryService.GetByID(id);
 
-            return Json(category, JsonRequestBehavior.AllowGet);
-        }
+        //    return Json(category, JsonRequestBehavior.AllowGet);
+        //}
 
         public ActionResult CategoryList()
         {
@@ -409,55 +429,74 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
         //    return View(category);
         //}
 
-        [HttpPost]
-        public JsonResult UpdateCategory(Category model)
-        {
-            try
-            {
-                Category category = _categoryService.GetByID(model.CategoryID);
-                category.CategoryName = model.CategoryName;
-                category.Description = model.Description;
-                _categoryService.Update(category);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-            return Json("ok", JsonRequestBehavior.AllowGet);
-        }
-
         //[HttpPost]
-        //public ActionResult UpdateCategory(Category _category)
+        //public JsonResult UpdateCategory(Category model)
         //{
         //    try
         //    {
-        //        Category category = _categoryService.GetByID(_category.CategoryID);
-        //        category.Description = _category.Description;
-        //        category.CategoryName = _category.CategoryName;
+        //        Category category = _categoryService.GetByID(model.CategoryID);
+        //        category.CategoryName = model.CategoryName;
+        //        category.Description = model.Description;
         //        _categoryService.Update(category);
-        //        return RedirectToAction("CategoryList");
-
         //    }
         //    catch (Exception ex)
         //    {
-
-        //        throw new Exception("Güncelleme başarısız oldu.");
+        //        throw new Exception(ex.Message);
         //    }
+        //    return Json("ok", JsonRequestBehavior.AllowGet);
         //}
 
-        public JsonResult DeleteCategory(int id)
-        {
-            try
-            {
-                _categoryService.Delete(id);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-            return Json("ok", JsonRequestBehavior.AllowGet);
 
+
+        //public JsonResult DeleteCategory(int id)
+        //{
+        //    try
+        //    {
+        //        _categoryService.Delete(id);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw new Exception(ex.Message);
+        //    }
+        //    return Json("ok", JsonRequestBehavior.AllowGet);
+
+        //}
+
+        public ActionResult DeleteCategory(int id)
+        {
+            _categoryService.Delete(id);
+            return RedirectToAction("CategoryList");
         }
+        public ActionResult DeleteBrand(int id)
+        {
+            _brandService.Delete(id);
+            return RedirectToAction("BrandList");
+        }
+        public ActionResult DeleteShipper(int id)
+        {
+            _shipperService.Delete(id);
+            return RedirectToAction("ShipperList");
+        }
+        public ActionResult DeleteProduct(int id)
+        {
+            _productService.Delete(id);
+            return RedirectToAction("ProductList");
+        }
+
+        public ActionResult GetCategory(int id)
+        {
+            var category = _categoryService.GetByID(id);
+            return View("GetCategory", category);
+        }
+
+        public ActionResult UpdateCategory(Category c1)
+        {
+            var kat = _categoryService.GetByID(c1.CategoryID);
+            kat.CategoryName = c1.CategoryName;
+            kat.Description = c1.Description;
+            return RedirectToAction("CategoryList");
+        }
+
 
         public ActionResult AddShipper()
         {
@@ -494,35 +533,35 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
             return View(_shipperService.GetAll());
         }
 
-        [HttpPost]
-        public JsonResult UpdateShipper(Shipper model)
+        //[HttpPost]
+        //public JsonResult UpdateShipper(Shipper model)
+        //{
+        //    try
+        //    {
+        //        Shipper shipper = _shipperService.GetByID(model.ShipperID);
+        //        shipper.CompanyName = model.CompanyName;
+        //        shipper.Phone = model.Phone;
+        //        _shipperService.Update(shipper);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw new Exception(ex.Message);
+        //    }
+        //    return Json("ok", JsonRequestBehavior.AllowGet);
+        //}
+
+
+        //[HttpPost]
+        //public JsonResult GetShipper(int id)
+        //{
+        //    Shipper shipper = _shipperService.GetByID(id);
+
+        //    return Json(shipper, JsonRequestBehavior.AllowGet);
+        //}
+
+        public ActionResult ActiveShipper(int shipperID)
         {
-            try
-            {
-                Shipper shipper = _shipperService.GetByID(model.ShipperID);
-                shipper.CompanyName = model.CompanyName;
-                shipper.Phone = model.Phone;
-                _shipperService.Update(shipper);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-            return Json("ok", JsonRequestBehavior.AllowGet);
-        }
-
-
-        [HttpPost]
-        public JsonResult GetShipper(int id)
-        {
-            Shipper shipper = _shipperService.GetByID(id);
-
-            return Json(shipper, JsonRequestBehavior.AllowGet);
-        }
-
-        public ActionResult ActiveShipper(int id)
-        {
-            Shipper shipper = _shipperService.GetByID(id);
+            Shipper shipper = _shipperService.GetByID(shipperID);
             if (shipper.IsActive == true)
             {
                 shipper.IsActive = false;
@@ -537,19 +576,32 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
 
         }
 
-        public JsonResult DeleteShipper(int id)
+        //public JsonResult DeleteShipper(int shipperID)
+        //{
+        //    try
+        //    {
+        //        _shipperService.Delete(shipperID);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw new Exception(ex.Message);
+        //    }
+        //    return Json("ok", JsonRequestBehavior.AllowGet);
+        //}
+
+        public ActionResult GetShipper(int id)
         {
-            try
-            {
-                _shipperService.Delete(id);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-            return Json("ok", JsonRequestBehavior.AllowGet);
+            var shipper = _shipperService.GetByID(id);
+            return View("GetShipper", shipper);
         }
 
+        public ActionResult UpdateShipper(Shipper yeni)
+        {
+            var ship = _shipperService.GetByID(yeni.ShipperID);
+            ship.CompanyName = yeni.CompanyName;
+            ship.Phone = yeni.Phone;
+            return RedirectToAction("ShipperList");
+        }
 
 
 
