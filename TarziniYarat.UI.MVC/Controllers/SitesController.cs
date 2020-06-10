@@ -49,8 +49,9 @@ namespace TarziniYarat.UI.MVC.Controllers
             ViewBag.Product = models;
             return RedirectToAction("HomePage", "Sites", new { id = personID });
         }
-       
-        public ActionResult Shop(int catID=0, int brandID=0)
+
+
+        public ActionResult Shop(int catID = 0, int brandID = 0, int sizeID = 0, int colorID = 0)
         {
             List<Category> category = _categoryService.GetAll();
             List<Brand> brands = _brandService.GetAll();
@@ -60,20 +61,30 @@ namespace TarziniYarat.UI.MVC.Controllers
             ViewBag.Size = sizes;
             ViewBag.Brand = brands;
             ViewBag.Category = category;
-            if (catID!=0)
+            if (catID != 0)
             {
                 return View(_productService.GetAllByCategory(catID));
             }
-            else if (brandID!=0)
+            else if (brandID != 0)
             {
                 return View(_productService.GetAllByBrandId(brandID));
             }
-            else if (brandID!=0 && catID!=0)
+            else if (brandID != 0 && catID != 0)
             {
                 return View(_productService.GetAllCatIdBrandId(catID, brandID));
             }
+            if (sizeID != 0)
+            {
+                return View(_productService.GetAllSizeId(sizeID));
+            }
+            else if (colorID != 0)
+            {
+                return View(_productService.GetAllColorId(colorID));
+            }
+
             return View(_productService.GetAll());
         }
+
 
         public ActionResult ProductDetail(int id)
         {

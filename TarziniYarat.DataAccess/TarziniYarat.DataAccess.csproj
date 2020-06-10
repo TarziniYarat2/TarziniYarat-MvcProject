@@ -88,7 +88,7 @@
     <Compile Include="Concrete\EntityFramework\Repository\RoleRepository.cs" />
     <Compile Include="Concrete\EntityFramework\Repository\ShipperRepository.cs" />
     <Compile Include="Concrete\EntityFramework\TarziniYaratDbContext.cs" />
-    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Concrete\EntityFramework\Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

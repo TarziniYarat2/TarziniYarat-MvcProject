@@ -13,5 +13,7 @@ namespace TarziniYarat.BusinessLogic.Abstract
         List<Product> GetAllByCategoryName(string categoyName);
         List<Product> GetAllByBrandId(int brandID);
         List<Product> GetAllCatIdBrandId(int catID, int brandID);
+        List<Product> GetAllSizeId(int sizeID);
+        List<Product> GetAllColorId(int colorID);
     }
 }

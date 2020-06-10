@@ -1,4 +1,4 @@
-﻿
+﻿@model Dictionary<string, string>
 @{
     ViewBag.Title = "Blog";
     Layout = "~/Views/Shared/_LayoutSites.cshtml";
@@ -82,13 +82,9 @@
                                 <img src="~/Assets/img/m-blog-1.jpg" alt="">
                                 <div class="blog_details">
                                     <a href="/Sites/BlogDetail">
-                                        <h2>Astronomy Binoculars A Great Alternative</h2>
+                                        <h2>@TempData["Baslik"]</h2>
                                     </a>
-                                    <p>
-                                        MCSE boot camps have its supporters and its detractors. Some people do not understand
-                                        why you should have to spend money on boot camp when you can get the MCSE study
-                                        materials yourself at a fraction.
-                                    </p>
+                                    <p>@TempData["Message"]</p>
                                     <a href="/Sites/BlogDetail" class="white_bg_btn">View More</a>
                                 </div>
                             </div>
@@ -97,7 +93,7 @@
                     <article class="row blog_item">
                         <div class="col-md-9">
                             <div class="blog_post">
-                                <img  src="~/Assets/img/m-blog-2.jpg" alt="">
+                                <img src="~/Assets/img/m-blog-2.jpg" alt="">
                                 <div class="blog_details">
                                     <a href="/Sites/BlogDetail">
                                         <h2>The Basics Of Buying A Telescope</h2>
@@ -205,4 +201,3 @@
     </div>
 </section>
 <!--================Blog Area =================-->
-
