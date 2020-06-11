@@ -145,15 +145,15 @@ namespace TarziniYarat.UI.MVC.Controllers
             return View(_productService.GetByID(productID));
         }
 
-        public ActionResult Profil(int id) //kullanıcı profil sayfası yapıldı.
-        {     
-            return View(_personService.GetByID(id));
+        public ActionResult Profil( ) //kullanıcı profil sayfası yapıldı.
+        {   
+            return View(_personService.GetByID((int)Session["memberID"]));
         }
 
         [HttpPost]
         public ActionResult Profil(Person p)
         {
-            Person person = new Person();
+           Person person = _personService.GetByID((int)Session["memberID"]);          
             person.TCKN = p.TCKN;
             person.Name = p.Name;
             person.Surname = p.Surname;
@@ -161,8 +161,7 @@ namespace TarziniYarat.UI.MVC.Controllers
             person.Password = p.Password;
             _personService.Update(person);
             return View();
-        }
-
+        }      
         public ActionResult Combine()
         {
             return View();

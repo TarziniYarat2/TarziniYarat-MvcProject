@@ -2316,12 +2316,12 @@
     <Content Include="Views\Sites\ProductDetail.cshtml" />
     <Content Include="Views\Sites\WaitPage.cshtml" />
     <Content Include="Views\Sites\HomePage.cshtml" />
-    <Content Include="Views\Sites\Profil.cshtml" />
     <Content Include="Views\Card\_CartList.cshtml" />
     <Content Include="Views\Card\List.cshtml" />
     <Content Include="Views\Modelist\ModelistBlog.cshtml" />
     <Content Include="Views\Order\PersonDetail.cshtml" />
     <Content Include="Views\Card\ResultOrder.cshtml" />
+    <Content Include="Views\Sites\Profil.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
