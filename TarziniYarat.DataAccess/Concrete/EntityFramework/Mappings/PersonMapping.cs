@@ -49,7 +49,10 @@ namespace TarziniYarat.DataAccess.Concrete.EntityFramework.Mappings
                 .HasForeignKey(a => a.PersonID)
                 .WillCascadeOnDelete(false);
 
-               
+           
+
+
+
         }
     }
 }

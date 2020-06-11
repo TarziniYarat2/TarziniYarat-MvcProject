@@ -11,7 +11,7 @@ namespace TarziniYarat.Model
 {
     public class PersonDetails:BaseEntity
     {
-        
+        public int PersonDetailsID { get; set; }
         public int PersonID { get; set; }
         [Required(ErrorMessage = "Bu alan boş geçilemez.")]
         [DisplayName("Ülke")]

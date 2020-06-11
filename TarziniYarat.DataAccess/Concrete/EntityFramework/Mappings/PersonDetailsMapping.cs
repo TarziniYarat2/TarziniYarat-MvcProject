@@ -12,7 +12,7 @@ namespace TarziniYarat.DataAccess.Concrete.EntityFramework.Mappings
     {
         public PersonDetailsMapping()
         {
-            HasKey(a => a.PersonID);
+           
 
             Property(a => a.Country)
                 .HasMaxLength(30)
@@ -31,7 +31,9 @@ namespace TarziniYarat.DataAccess.Concrete.EntityFramework.Mappings
                 .IsRequired();
 
             HasRequired(a => a.Person)
-                .WithOptional(a => a.PersonDetails);
+                 .WithMany(a => a.PersonDetails)
+                 .HasForeignKey(a => a.PersonID)
+                 .WillCascadeOnDelete(false);
         }
     }
 }
