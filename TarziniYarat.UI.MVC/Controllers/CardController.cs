@@ -6,10 +6,12 @@ using System.Web;
 using System.Web.Mvc;
 using TarziniYarat.BusinessLogic.Abstract;
 using TarziniYarat.Model;
+using TarziniYarat.UI.MVC.Filtres;
 using TarziniYarat.UI.MVC.Models;
 
 namespace TarziniYarat.UI.MVC.Controllers
 {
+    
     public class CardController : Controller
     {
         IProductService _productService;
@@ -65,15 +67,22 @@ namespace TarziniYarat.UI.MVC.Controllers
             }
         }
 
-        public ViewResult List()
+        public ActionResult List()
         {
-            return View();
+            if (Session["memberID"]==null)
+            {
+                return RedirectToAction("Login");
+            }
+            else {
+            return View(); }
         }
-
+        
         public ActionResult GetCart()
         {
+           
             GetCardList();
-            return PartialView("_CartList");
+            return PartialView("_CartList"); 
+            
         }
 
         private void GetCardList()

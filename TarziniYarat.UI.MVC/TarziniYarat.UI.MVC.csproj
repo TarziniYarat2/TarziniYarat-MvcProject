@@ -2286,13 +2286,11 @@
     <Content Include="Areas\Admin\Views\AdminProcess\CategoryList.cshtml" />
     <Content Include="Areas\Admin\Views\AdminProcess\BrandList.cshtml" />
     <Content Include="Areas\Admin\Views\AdminProcess\PersonList.cshtml" />
-    <Content Include="Areas\Admin\Views\Admin\AddMember.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\BrowseComment.cshtml" />
     <Content Include="Areas\Admin\Views\AdminProcess\AddCategory.cshtml" />
     <Content Include="Areas\Admin\Views\AdminProcess\ShipperList.cshtml" />
     <Content Include="Areas\Admin\Views\AdminProcess\AddBrand.cshtml" />
     <Content Include="Areas\Admin\Views\AdminProcess\AddShipper.cshtml" />
-    <Content Include="Areas\Admin\Views\MembersOrder\ShipperProduct.cshtml" />
     <Content Include="Areas\Admin\Views\AdminProcess\CreateProduct.cshtml" />
     <Content Include="Areas\Admin\Views\MembersOrder\StokTraking.cshtml" />
     <Content Include="Areas\Admin\Views\AdminProcess\UpdateProduct.cshtml" />
@@ -2304,10 +2302,7 @@
     <None Include="packages.config" />
     <Content Include="Views\Shared\_LayoutSites.cshtml" />
     <Content Include="Views\Sites\Shop.cshtml" />
-    <Content Include="Views\Sites\Combine.cshtml" />
-    <Content Include="Views\Sites\CreateCombine.cshtml" />
     <Content Include="Views\Sites\ViewCombine.cshtml" />
-    <Content Include="Views\Sites\AllViewCombine.cshtml" />
     <Content Include="Views\Sites\Blog.cshtml" />
     <Content Include="Views\Sites\Login.cshtml" />
     <Content Include="Views\Sites\Registration.cshtml" />

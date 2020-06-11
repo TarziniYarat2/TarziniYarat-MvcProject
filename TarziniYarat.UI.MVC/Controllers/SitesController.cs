@@ -153,17 +153,13 @@ namespace TarziniYarat.UI.MVC.Controllers
         [HttpPost]
         public ActionResult Profil(Person p)
         {
-           Person person = _personService.GetByID((int)Session["memberID"]);          
+            Person person = _personService.GetByID((int)Session["memberID"]);
             person.TCKN = p.TCKN;
             person.Name = p.Name;
             person.Surname = p.Surname;
             person.Username = p.Username;
             person.Password = p.Password;
             _personService.Update(person);
-            return View();
-        }      
-        public ActionResult Combine()
-        {
             return View();
         }
 
@@ -172,18 +168,7 @@ namespace TarziniYarat.UI.MVC.Controllers
             Session.Abandon();
             return RedirectToAction("Login");
         }
-        public ActionResult CreateCombine()
-        {
-            return View();
-        }
-        public ActionResult ViewCombine()
-        {
-            return View();
-        }
-        public ActionResult AllViewCombine()
-        {
-            return View();
-        }
+      
         public ActionResult Blog()
         {
             return View();
@@ -229,7 +214,7 @@ namespace TarziniYarat.UI.MVC.Controllers
             {
                 if (login.UserName == item.Username && login.Password == item.Password)
                 {
-                    Session["memberID"] = item.PersonID;
+                    Session["memberID"] = item.PersonID;                 
                     if (login.UserName== "thelastdance@mail.com" && login.Password=="123456")
                     {
                         return RedirectToAction("Index", "Admin", new { area = "Admin", id = item.PersonID });

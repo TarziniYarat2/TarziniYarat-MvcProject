@@ -17,15 +17,15 @@
 
         protected override void Seed(TarziniYarat.DataAccess.Concrete.EntityFramework.TarziniYaratDbContext context)
         {
-            List<Role> roles = new List<Role>()
-            {
-                new Role(){RoleName="Admin"},
-                new Role(){RoleName="Uye"},
-                new Role(){RoleName="Modelist"},
-                new Role(){RoleName="Ziyaretci"},
+            //List<Role> roles = new List<Role>()
+            //{
+            //    new Role(){RoleName="Admin"},
+            //    new Role(){RoleName="Uye"},
+            //    new Role(){RoleName="Modelist"},
+            //    new Role(){RoleName="Ziyaretci"},
 
-            };
-            context.Roles.AddRange(roles);
+            //};
+            //context.Roles.AddRange(roles);
 
             //Person admin = new Person()
             //{
@@ -40,7 +40,7 @@
             //    BirthDate = DateTime.Now
             //};
             //context.Persons.Add(admin);
-            context.SaveChanges();
+            //context.SaveChanges();
         }
     }
 }

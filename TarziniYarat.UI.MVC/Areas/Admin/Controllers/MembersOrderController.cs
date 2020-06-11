@@ -11,7 +11,7 @@ using TarziniYarat.UI.MVC.Filtres;
 
 namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
 {
-    
+    [CustomAuthorize(Roles = "Admin")]
     public class MembersOrderController : Controller
     {
         IShipperService _shipperService;
@@ -39,31 +39,5 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
             return RedirectToAction("StokTraking");
         }
 
-
-        //public ActionResult ShipperProduct(int? id)
-        //{
-        //    if (id.HasValue)
-        //    {
-        //        List<ShipperProductVM> shippers = new List<ShipperProductVM>();
-
-        //        foreach (Product item in _productService.GetAllByShipper(id))
-        //        {
-        //            shippers.Add(new ShipperProductVM()
-        //            {
-        //                CompanyName = item.Shipper.CompanyName,
-        //                Phone = item.Shipper.Phone,
-        //                ProductName = item.ProductName,
-
-        //            });
-        //        }
-
-        //        return View(shippers);
-
-        //    }
-        //    else
-        //    {
-        //        return RedirectToAction("ShipperList", "AdminProcess");
-        //    }
-        //}
     }
 }

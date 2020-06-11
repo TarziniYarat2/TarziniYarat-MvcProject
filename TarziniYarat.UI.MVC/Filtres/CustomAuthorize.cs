@@ -9,6 +9,7 @@ namespace TarziniYarat.UI.MVC.Filtres
 {
     public class CustomAuthorize: AuthorizeAttribute
     {
+        
         protected override bool AuthorizeCore(HttpContextBase httpContext)
         {
             if (httpContext.Session["person"]==null)

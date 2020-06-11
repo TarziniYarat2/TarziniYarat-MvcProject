@@ -5,9 +5,11 @@ using System.Web;
 using System.Web.Mvc;
 using TarziniYarat.BusinessLogic.Abstract;
 using TarziniYarat.Model;
+using TarziniYarat.UI.MVC.Filtres;
 
 namespace TarziniYarat.UI.MVC.Controllers
 {
+    [CustomAuthorize(Roles = "Admin,Uye,Modelist")]
     public class OrderController : Controller
     {
         IShipperService _shipperService;
