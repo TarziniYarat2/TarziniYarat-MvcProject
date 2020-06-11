@@ -13,7 +13,6 @@ using TarziniYarat.UI.MVC.Models;
 
 namespace TarziniYarat.UI.MVC.Controllers
 {
-    
     public class SitesController : Controller
     {
         
@@ -92,7 +91,7 @@ namespace TarziniYarat.UI.MVC.Controllers
         public ActionResult ProductDetail(int id)
         {
             GetAllComment(id);
-
+            ViewBag.PersonID = Session["memberID"];
             return View(_productService.GetByID(id));
         }
 
@@ -214,6 +213,7 @@ namespace TarziniYarat.UI.MVC.Controllers
             {
                 if (login.UserName == item.Username && login.Password == item.Password)
                 {
+                    Session["person"] = _personService.GetByID(item.PersonID);
                     Session["memberID"] = item.PersonID;                 
                     if (login.UserName== "thelastdance@mail.com" && login.Password=="123456")
                     {
@@ -226,10 +226,6 @@ namespace TarziniYarat.UI.MVC.Controllers
                     else if (item.RoleID==3 && item.IsActive==true)
                     {
                         return RedirectToAction("Home", "Sites", new  { Username = item.Username, PersonID = item.PersonID });
-                    }
-                    else if (item.RoleID == 2 || item.RoleID == 3)
-                    {
-                        return RedirectToAction("Profil", "Sites", new { id = item.PersonID });
                     }
                 }
                 else

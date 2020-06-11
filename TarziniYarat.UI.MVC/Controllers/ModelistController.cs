@@ -9,7 +9,7 @@ namespace TarziniYarat.UI.MVC.Controllers
 {
     public class ModelistController : Controller
     {
-        [CustomAuthorize(Roles = "Admin,Modelist")]
+       
         public ActionResult ModelistBlog()
         {
             return View();

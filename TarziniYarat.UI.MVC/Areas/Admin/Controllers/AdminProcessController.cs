@@ -11,7 +11,7 @@ using TarziniYarat.UI.MVC.Models;
 
 namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
 {
-    [CustomAuthorize(Roles = "Admin")]
+  
     public class AdminProcessController : Controller
     {
         IProductService _productService;

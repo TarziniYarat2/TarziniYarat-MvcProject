@@ -9,6 +9,7 @@
 
     internal sealed class Configuration : DbMigrationsConfiguration<TarziniYarat.DataAccess.Concrete.EntityFramework.TarziniYaratDbContext>
     {
+        
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
@@ -17,6 +18,7 @@
 
         protected override void Seed(TarziniYarat.DataAccess.Concrete.EntityFramework.TarziniYaratDbContext context)
         {
+
             //List<Role> roles = new List<Role>()
             //{
             //    new Role(){RoleName="Admin"},
@@ -27,20 +29,21 @@
             //};
             //context.Roles.AddRange(roles);
 
-            //Person admin = new Person()
-            //{
-            //    Name = "Admin",
-            //    Surname = "Admin",
-            //    Username = "thelastdance@mail.com",
-            //    Password = "123456",
-            //    CreatedDate = DateTime.Now,
-            //    IsActive = true,
-            //    RoleID = 1,
-            //    TCKN = "12345678978",
-            //    BirthDate = DateTime.Now
-            //};
-            //context.Persons.Add(admin);
-            //context.SaveChanges();
+            Person admin = new Person()
+            {
+                Name = "Admin",
+                Surname = "Admin",
+                Username = "thelastdance@mail.com",
+                Password = "123456",
+                CreatedDate = DateTime.Now,
+                IsActive = true,
+                RoleID = 1,
+                TCKN = "12345678978",
+                BirthDate = DateTime.Now,
+
+            };
+            context.Persons.Add(admin);
+            context.SaveChanges();
         }
     }
 }

@@ -50,10 +50,21 @@
                     @* Ürün açıklaması buraya *@
                     @*<p><b style="color:black">Kategori :</b> @Model.Category.CategoryName </p>*@
                     <p><b style="color:black">Ürün Açıklaması : </b>@Model.Description </p>
-                    <div class="card_area">
-                        <a href="javascript:void(0)" data-productID="@Model.ProductID" class="addCart btn btn-primary">Sepete Ekle</a>
-                        <a href="/Card/List" class="btn btn-outline-primary">Sepete Git</a>
-                    </div>
+                    @if (ViewBag.PersonID != null)
+                    {
+                        <div class="card_area">
+                            <a href="javascript:void(0)" data-productID="@Model.ProductID" class="addCart btn btn-primary">Sepete Ekle</a>
+                            <a href="/Card/List" class="btn btn-outline-primary">Sepete Git</a>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="card_area">
+                            <a href="/Sites/Login" data-productID="@Model.ProductID" class="addCart btn btn-primary">Sepete Ekle</a>
+                            <a href="/Sites/Login" class="btn btn-outline-primary">Sepete Git</a>
+                        </div>
+                    }
+
                 </div>
             </div>
         </div>

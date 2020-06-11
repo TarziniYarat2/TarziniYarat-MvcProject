@@ -9,7 +9,7 @@ using TarziniYarat.UI.MVC.Filtres;
 
 namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
 {
-    [CustomAuthorize(Roles = "Admin")]
+    
     public class AdminController : Controller
     {
         IPersonService _personService;
@@ -30,10 +30,10 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
             return View();
         }
 
-
+      
         public ActionResult AdminUpdate()
         {
-            int id = (int)Session["AdminID"];
+            int id = (int)Session["memberID"];
             Person admin = _personService.GetByID(id);
             return View(admin);
         }
