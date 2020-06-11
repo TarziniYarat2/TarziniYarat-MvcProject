@@ -116,36 +116,6 @@ namespace TarziniYarat.UI.MVC.Controllers
         }
 
 
-        //[HttpPost]
-        //public ActionResult ProductDetail(Comment comment)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        Comment comment1 = new Comment();
-        //        comment1.CommentDate = DateTime.Now;
-        //        comment1.Content = comment.Content;
-        //        comment1.PersonID = (int)Session["memberID"];
-        //        comment1.ProductID = comment.ProductID;
-
-
-        //        try
-        //        {
-        //            _commentService.Add(comment1);
-        //            return View();
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            ModelState.AddModelError("", ex.Message);
-        //        }
-        //    }
-        //    else
-        //    {
-        //        ViewBag.Hata = "Yorum yapılırken bir hata oluştu. ";
-
-        //    }
-        //    return View();
-        //}
-
         [HttpPost]
         public ActionResult ProductDetail(string message,int productID)
         {
@@ -156,8 +126,6 @@ namespace TarziniYarat.UI.MVC.Controllers
                 comment.Content = message;
                 comment.PersonID = (int)Session["memberID"];
                 comment.ProductID = productID;
-
-
                 try
                 {
                     _commentService.Add(comment);

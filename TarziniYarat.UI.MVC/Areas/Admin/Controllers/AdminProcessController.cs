@@ -322,11 +322,6 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
         }
 
 
-
-
-
-
-
         // TODO: Body enumı alınıp ViewBag e aktarıldı.
         private void GetBodyFromEnumToDLL()
         {

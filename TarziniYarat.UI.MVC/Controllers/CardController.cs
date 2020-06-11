@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Web;
 using System.Web.Mvc;
 using TarziniYarat.BusinessLogic.Abstract;
@@ -12,9 +13,15 @@ namespace TarziniYarat.UI.MVC.Controllers
     public class CardController : Controller
     {
         IProductService _productService;
-        public CardController(IProductService productService)
+        IPersonDetailsService _personDetailsService;
+        IShipperService _shipperService;
+        IOrderService _orderService;
+        public CardController(IProductService productService, IPersonDetailsService personDetailsService,IShipperService shipperService,IOrderService orderService)
         {
             _productService = productService;
+            _personDetailsService = personDetailsService;
+            _shipperService = shipperService;
+            _orderService = orderService;
         }
         public JsonResult AddToCart(int productID)
         {
@@ -65,8 +72,55 @@ namespace TarziniYarat.UI.MVC.Controllers
 
         public ActionResult GetCart()
         {
-            List<CartItem> cart = Session["cart"] == null ? new List<CartItem>() : Session["cart"] as List<CartItem>;
-            return PartialView("_CartList", cart);
+            GetCardList();
+            return PartialView("_CartList");
         }
+
+        private void GetCardList()
+        {
+            List<CartItem> cart = Session["cart"] == null ? new List<CartItem>() : Session["cart"] as List<CartItem>;
+            ViewBag.CartList = cart;
+            GetShipperToDLL();
+            TempData["Count"] = cart.Count;
+        }
+
+        [HttpPost]
+        public ActionResult GetPersonDetail(PersonDetails model)
+        {
+
+            PersonDetails person = new PersonDetails();
+            person.PersonID = (int)Session["memberID"];
+            person.PhoneNumber = model.PhoneNumber;
+            person.Address = model.Address;
+            person.City = model.City;
+            person.Country = model.Country;
+            _personDetailsService.Add(person);
+
+            Order order = new Order();
+            order.CreatedDate = DateTime.Now;
+            order.PersonID =(int) Session["memberID"];
+            order.ShipperID = 1;
+            _orderService.Add(order);
+         
+            GetCardList();
+            GetShipperToDLL();
+            TempData["mesaj"] = "<script>alert('Siparişiniz alınmıştır')</script>";
+            return RedirectToAction("ResultOrder");
+        }
+        public ActionResult ResultOrder()
+        {
+            return View();
+        }
+
+        private void GetShipperToDLL()
+        {
+            List<Shipper> shippers = new List<Shipper>();
+            foreach (Shipper item in _shipperService.GetAll())
+            {
+                shippers.Add(new Shipper { CompanyName = item.CompanyName, ShipperID = item.ShipperID });
+            }
+            ViewBag.Shippers = shippers;
+        }
+        
     }
 }
