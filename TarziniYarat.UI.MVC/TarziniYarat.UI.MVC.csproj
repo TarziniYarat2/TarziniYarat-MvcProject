@@ -2047,6 +2047,7 @@
     <Compile Include="Areas\Admin\ViewModels\ShipperProductVM.cs" />
     <Compile Include="Controllers\CardController.cs" />
     <Compile Include="Controllers\ModelistController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\SitesController.cs" />
     <Compile Include="Filtres\CustomAuthorize.cs" />
     <Compile Include="Global.asax.cs">
@@ -2320,6 +2321,7 @@
     <Content Include="Views\Card\_CartList.cshtml" />
     <Content Include="Views\Card\List.cshtml" />
     <Content Include="Views\Modelist\ModelistBlog.cshtml" />
+    <Content Include="Views\Order\PersonDetail.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
