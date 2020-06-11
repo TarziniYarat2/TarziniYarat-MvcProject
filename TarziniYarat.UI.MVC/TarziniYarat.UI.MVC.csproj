@@ -2322,6 +2322,7 @@
     <Content Include="Views\Order\PersonDetail.cshtml" />
     <Content Include="Views\Card\ResultOrder.cshtml" />
     <Content Include="Views\Sites\Profil.cshtml" />
+    <Content Include="Views\Sites\Error.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

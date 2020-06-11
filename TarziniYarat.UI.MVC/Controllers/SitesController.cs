@@ -166,6 +166,12 @@ namespace TarziniYarat.UI.MVC.Controllers
         {
             return View();
         }
+
+        public ActionResult LogOut()
+        {
+            Session.Abandon();
+            return RedirectToAction("Login");
+        }
         public ActionResult CreateCombine()
         {
             return View();
@@ -186,6 +192,11 @@ namespace TarziniYarat.UI.MVC.Controllers
         {
             return View();
         }
+        public ActionResult Error()
+        {
+            return View();
+        }
+
         public ActionResult Login()
         {
             if (Request.Cookies["login"] != null)
