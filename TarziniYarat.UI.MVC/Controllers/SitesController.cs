@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Ajax.Utilities;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -90,6 +91,13 @@ namespace TarziniYarat.UI.MVC.Controllers
 
         public ActionResult ProductDetail(int id)
         {
+            GetAllComment(id);
+
+            return View(_productService.GetByID(id));
+        }
+
+        private void GetAllComment(int id)
+        {
             List<ProductComment> commentProduct = new List<ProductComment>();
             List<Comment> comments = _commentService.GetAllProductId(id);
             foreach (var item in comments)
@@ -105,12 +113,73 @@ namespace TarziniYarat.UI.MVC.Controllers
             }
 
             ViewBag.Comment = commentProduct;
-            
-            return View(_productService.GetByID(id));
+        }
+
+
+        //[HttpPost]
+        //public ActionResult ProductDetail(Comment comment)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        Comment comment1 = new Comment();
+        //        comment1.CommentDate = DateTime.Now;
+        //        comment1.Content = comment.Content;
+        //        comment1.PersonID = (int)Session["memberID"];
+        //        comment1.ProductID = comment.ProductID;
+
+
+        //        try
+        //        {
+        //            _commentService.Add(comment1);
+        //            return View();
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            ModelState.AddModelError("", ex.Message);
+        //        }
+        //    }
+        //    else
+        //    {
+        //        ViewBag.Hata = "Yorum yapılırken bir hata oluştu. ";
+
+        //    }
+        //    return View();
+        //}
+
+        [HttpPost]
+        public ActionResult ProductDetail(string message,int productID)
+        {
+            if (ModelState.IsValid)
+            {
+                Comment comment = new Comment();
+                comment.CommentDate = DateTime.Now;
+                comment.Content = message;
+                comment.PersonID = (int)Session["memberID"];
+                comment.ProductID = productID;
+
+
+                try
+                {
+                    _commentService.Add(comment);
+                    GetAllComment(productID);
+                    return View(_productService.GetByID(productID));
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError("", ex.Message);
+                }
+            }
+            else
+            {
+                ViewBag.Hata = "Yorum yapılırken bir hata oluştu. ";
+
+            }
+            return View(_productService.GetByID(productID));
         }
 
         public ActionResult Profil(int id) //kullanıcı profil sayfası yapıldı.
-        {            return View(_personService.GetByID(id));
+        {     
+            return View(_personService.GetByID(id));
         }
 
         [HttpPost]
@@ -182,6 +251,7 @@ namespace TarziniYarat.UI.MVC.Controllers
             {
                 if (login.UserName == item.Username && login.Password == item.Password)
                 {
+                    Session["memberID"] = item.PersonID;
                     if (login.UserName== "thelastdance@mail.com" && login.Password=="123456")
                     {
                         return RedirectToAction("Index", "Admin", new { area = "Admin", id = item.PersonID });

@@ -44,30 +44,12 @@
             <div class="col-lg-5 offset-lg-1">
                 <div class="s_product_text">
                     @* Ürün adı buraya *@
-                    <h3>@Model.ProductName</h3>
+                    <h3>Ürün Adı : @Model.ProductName</h3>
                     @* Ürün fiyatı buraya *@
-                    <h2>@Model.UnitPrice TL</h2>
-                    <ul class="list">
-                        <li>
-                            <a class="active" href="#">
-                                @* Kategori adı buraya *@
-                                <span>Kategori</span> : @Model.Category.CategoryName
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                @* stok miktarı buraya *@
-                                <span>Stok Miktarı</span> : Son @Model.UnitsInStock Adet Ürün
-                            </a>
-                        </li>
-                    </ul>
+                    <h2>Fiyat : @Model.UnitPrice TL</h2>
                     @* Ürün açıklaması buraya *@
-                    <p>@Model.Description </p>
-                    <div class="product_count">
-                        <label for="qty">Adet:</label>
-                        @* Ürün miktarı (alınacak) *@
-                        <input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:" class="input-text qty">
-                    </div>
+                    <p><b style="color:black">Kategori :</b> @Model.Category.CategoryName </p>
+                    <p><b style="color:black">Ürün Açıklaması : </b>@Model.Description </p>
                     <div class="card_area">
                         <a href="javascript:void(0)" data-productID="@Model.ProductID" class="addCart btn btn-primary">Sepete Ekle</a>
                         <a href="/Card/List" class="btn btn-outline-primary">Sepete Git</a>
@@ -96,20 +78,22 @@
                                     @*<div class="d-flex">
                                             <img src="~/Assets/img/review-1.png" />
                                         </div>*@
-                                    @foreach (ProductComment item in ViewBag.Comment)
-                                    {
-                                        <div class="media-body">
-                                            @* Yorum yapanın adı *@
-                                            <h4>@item.UserName</h4>
-                                            @* yorum tarihi *@
-                                            <h5>@item.CreatedDate</h5>
-                                            <a class="reply_btn" href="#">Cevapla</a>
-                                        </div>
-                                        <div class="media-body">
-                                            <p>@item.Content</p>
-                                        </div>
-
-                                    }
+                                    <table class="table table-hover">
+                                        @foreach (ProductComment item in ViewBag.Comment)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    <div class="media-body">
+                                                        @* Yorum yapanın adı *@
+                                                        <h4><i style="color:dimgray">@item.UserName &nbsp;&nbsp;@item.CreatedDate</i></h4>
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <p>@item.Content</p>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </table>
                                 </div>
                             </div>
                         </div>
@@ -117,22 +101,17 @@
                     <div class="col-lg-6">
                         <div class="review_box">
                             <h4>Yorum Yap</h4>
-                            @using (Html.BeginForm("AddComment", "Sites", FormMethod.Post))
+                            @using (Html.BeginForm("ProductDetail", "Sites", FormMethod.Post, new { productID = Model.ProductID }))
                             {
-
+                                @Html.HiddenFor(a => a.ProductID)
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <input type="email" class="form-control" id="email" name="email" placeholder="Mail">
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <textarea class="form-control" name="message" id="message" rows="1" placeholder="Yorum"></textarea>
+                                        @*@Html.TextAreaFor(a=>a.Content,new { @class= "form-control", placeholder = "Yorum", name = "message",id = "message" ,rows = "1" })*@
+                                        <textarea class="form-control" name="message" id="message" rows="1" placeholder="Yorum"> </textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-12 text-right">
-                                    @Html.ActionLink("Gönder", "ProductDetail", new { id = Model.ProductID })
-                                    @*<button type="submit" value="submit" class="btn submit_btn">Gönder</button>*@
+                                    <button type="submit" value="submit" class="btn submit_btn">Gönder</button>
                                 </div>
                             }
                         </div>
