@@ -68,3 +68,4 @@ C:\Users\tugba\Source\Repos\TarziniYarat-MvcProject.Guncel\TarziniYarat.Core\obj
 C:\Users\tugba\Source\Repos\TarziniYarat-MvcProject.Guncel\TarziniYarat.Core\obj\Debug\TarziniYarat.Core.csproj.CopyComplete
 C:\Users\tugba\Source\Repos\TarziniYarat-MvcProject.Guncel\TarziniYarat.Core\obj\Debug\TarziniYarat.Core.dll
 C:\Users\tugba\Source\Repos\TarziniYarat-MvcProject.Guncel\TarziniYarat.Core\obj\Debug\TarziniYarat.Core.pdb
+C:\Users\tugba\source\repos\TarziniYarat-MvcProject.Guncel\TarziniYarat.Core\obj\Debug\TarziniYarat.Core.csprojAssemblyReference.cache
