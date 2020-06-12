@@ -9,8 +9,6 @@ namespace TarziniYarat.Model
 {
     public class Combine:BaseEntity
     {
-        //TODO
-        //Çoko çok ilişki nasıl olmalıdır
         public Combine()
         {
             Likes = new HashSet<Like>();

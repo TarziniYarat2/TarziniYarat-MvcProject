@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,7 +15,9 @@ namespace TarziniYarat.Model
             Orders = new HashSet<Order>();
         }
         public int ShipperID { get; set; }
+        [DisplayName("Şirket Adı")]
         public string CompanyName { get; set; }
+        [DisplayName("Telefon Numarası")]
         public string Phone { get; set; }
 
         //Navigation prop

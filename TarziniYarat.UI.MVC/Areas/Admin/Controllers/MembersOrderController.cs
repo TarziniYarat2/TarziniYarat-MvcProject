@@ -23,9 +23,9 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
         }
         public ActionResult StokTraking()
         {
-            
             return View(_productService.GetAll());
         }
+
         public ActionResult GetProduct(int id)
         {
             var product = _productService.GetByID(id);
@@ -38,6 +38,5 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
             p.UnitsInStock = product.UnitsInStock;
             return RedirectToAction("StokTraking");
         }
-
     }
 }

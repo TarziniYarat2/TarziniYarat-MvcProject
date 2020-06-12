@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TarziniYarat.Core.Model;
 using System.Web;
+using System.ComponentModel;
 
 namespace TarziniYarat.Model
 {
@@ -20,13 +21,21 @@ namespace TarziniYarat.Model
         public int ProductID { get; set; }
         public int CategoryID { get; set; }
         public int BrandID { get; set; }
+        [DisplayName("Ürün Adı")]
         public string ProductName { get; set; }
+        [DisplayName("Resim")]
         public byte[] Photo { get; set; }
+        [DisplayName("Açıklama")]
         public string Description { get; set; }
+        [DisplayName("Fiyat")]
         public decimal UnitPrice { get; set; }
+        [DisplayName("Stok")]
         public int UnitsInStock { get; set; }
+        [DisplayName("Ürün Başlığı")]
         public string ProductTitle { get; set; }
+        [DisplayName("Beden")]
         public Size BodySize { get; set; }
+        [DisplayName("Renk")]
         public Color Color { get; set; }
 
 

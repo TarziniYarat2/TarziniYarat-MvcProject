@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,7 +15,9 @@ namespace TarziniYarat.Model
             Products = new HashSet<Product>();
         }
         public int CategoryID { get; set; }
+        [DisplayName("Kategori Adı")]
         public string CategoryName { get; set; }
+        [DisplayName("Açıklama")]
         public string Description { get; set; }
 
         //Navigation prop

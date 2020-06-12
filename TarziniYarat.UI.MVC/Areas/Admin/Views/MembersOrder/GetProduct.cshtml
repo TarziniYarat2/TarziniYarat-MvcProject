@@ -10,12 +10,12 @@
 @using (Html.BeginForm("UpdateProduct", "MembersOrder", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Product</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
- 
+
 
         <div class="form-group">
             @Html.LabelFor(model => model.UnitsInStock, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -27,7 +27,7 @@
 
         @Html.HiddenFor(model => model.ProductID)
 
-     
+
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">

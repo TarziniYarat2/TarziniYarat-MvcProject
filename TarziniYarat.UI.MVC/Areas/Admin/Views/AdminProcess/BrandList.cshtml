@@ -26,9 +26,6 @@
         <th>
             Sil
         </th>
-        <th>
-            Ürünlere Git
-        </th>
     </tr>
 
     @foreach (var item in Model)
@@ -54,10 +51,6 @@
         </button>
     </td>
     <td>@Html.ActionLink("Sil", "DeleteBrand", new { id = item.BrandID }, new { @class = "btn btn-danger", onclick = "return confirm('Gerçekten silmek istiyor musunuz?')" })</td>
-
-    <td>
-        @Html.ActionLink("Ürünlerine Git", "ProductList", new { brandID = item.BrandID }, new { @class = "btn btn-warning" })
-    </td>
 </tr>
     }
 
