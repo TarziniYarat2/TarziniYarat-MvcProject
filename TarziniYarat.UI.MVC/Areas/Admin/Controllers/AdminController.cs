@@ -59,11 +59,5 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
             }
             return View();
         }
-
-
-        public ActionResult BrowseComment()
-        {
-            return View();
-        }
     }
 }

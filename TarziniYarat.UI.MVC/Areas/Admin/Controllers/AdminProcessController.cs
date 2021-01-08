@@ -27,12 +27,10 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
             _shipperService = shipperService;
         }
 
-        //while creating a new product,we need to add product's brand which was created before.
         public ActionResult ProductList()
         {
             return View(_productService.GetAll());
         }
-
         public ActionResult CreateProduct()
         {
             GetAllCategoriesToDLL();
@@ -42,7 +40,6 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
             Product model = new Product();
             return View(model);
         }
-
         [HttpPost]
         public ActionResult CreateProduct(Product model, HttpPostedFileBase image1)
         {
@@ -69,7 +66,6 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
             GetColorFromEnumToDLL();
             return View(model);
         }
-
         public ActionResult UpdateProduct(int id)
         {
             Product currentProduct = null;
@@ -117,7 +113,6 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
             ViewBag.Check = false;
             return RedirectToAction("ProductList");
         }
-
         [HttpPost]
         public JsonResult ActivateProduct(int productID)
         {
@@ -134,8 +129,6 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
             }
             return Json("ok", JsonRequestBehavior.AllowGet);
         }
-
-
         public JsonResult UpdateStok(Product p)
         {
             Product product = _productService.GetByID(p.ProductID);
@@ -156,14 +149,12 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
         {
             return Json(JsonRequestBehavior.AllowGet);
         }
-
         public ActionResult PersonList()
         {
             List<Person> personList = _personService.GetAll();
 
             return View(personList);
         }
-
         public JsonResult ActivatePerson(int personID)
         {
             Person person = _personService.GetByID(personID);
@@ -179,7 +170,6 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
             }
             return Json("ok", JsonRequestBehavior.AllowGet);
         }
-
         public JsonResult PersonUyeChange(int personID)
         {
             Person person = _personService.GetByID(personID);
@@ -194,7 +184,6 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
             _personService.Update(person);
             return Json("ok", JsonRequestBehavior.AllowGet);
         }
-
         public JsonResult PersonModelistChange(int personID)
         {
             Person person = _personService.GetByID(personID);
@@ -209,27 +198,20 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
             _personService.Update(person);
             return Json("ok", JsonRequestBehavior.AllowGet);
         }
-
-
         public ActionResult BrandList()
         {
             return View(_brandService.GetAll());
         }
-
         public ActionResult AddBrand()
         {
             return View();
         }
-
         [HttpPost]
         public ActionResult AddBrand(Brand brand)
         {
             _brandService.Add(brand);
             return RedirectToAction("BrandList");
         }
-
-    
-
         private void GetAllBrandsToDLL()
         {
             List<SelectListItem> brands = new List<SelectListItem>();
@@ -239,7 +221,6 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
             }
             ViewBag.Brands = brands;
         }
-
         public ActionResult ActiveBrand(int brandID)
         {
             Brand brand = _brandService.GetByID(brandID);
@@ -256,13 +237,11 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
             return Json("ok", JsonRequestBehavior.AllowGet);
 
         }
-
         public ActionResult GetBrand(int id)
         {
             var brand = _brandService.GetByID(id);
             return View("GetBrand", brand);
         }
-
         public ActionResult UpdateBrand(Brand brand)
         {
             var b = _brandService.GetByID(brand.BrandID);
@@ -270,8 +249,6 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
             _brandService.Update(b);
             return RedirectToAction("BrandList");
         }
-
-
         // TODO: Body enumı alınıp ViewBag e aktarıldı.
         private void GetBodyFromEnumToDLL()
         {
@@ -283,7 +260,6 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
             }
             ViewBag.Bodies = body;
         }
-
         // TODO: Color enumı alınıp ViewBag e aktarıldı.
         private void GetColorFromEnumToDLL()
         {
@@ -295,7 +271,6 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
             }
             ViewBag.Color = color;
         }
-
         private void GetAllCategoriesToDLL()
         {
             List<SelectListItem> categories = new List<SelectListItem>();
@@ -305,15 +280,12 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
             }
             ViewBag.Categories = categories;
         }
-
-
         public ActionResult CategoryList()
         {
             List<Category> categoryList = _categoryService.GetAll();
 
             return View(categoryList);
         }
-
         public JsonResult ActivateCategory(int categoryID)
         {
             Category category = _categoryService.GetByID(categoryID);
@@ -330,12 +302,10 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
             return Json("ok", JsonRequestBehavior.AllowGet);
 
         }
-
         public ActionResult AddCategory()
         {
             return View();
         }
-
         [HttpPost]
         public ActionResult AddCategory(Category model)
         {
@@ -360,9 +330,6 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
             }
             return View();
         }
-
- 
-
         public ActionResult DeleteCategory(int id)
         {
             _categoryService.Delete(id);
@@ -383,13 +350,11 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
             _productService.Delete(id);
             return RedirectToAction("ProductList");
         }
-
         public ActionResult GetCategory(int id)
         {
             var category = _categoryService.GetByID(id);
             return View("GetCategory", category);
         }
-
         public ActionResult UpdateCategory(Category c1)
         {
             var kat = _categoryService.GetByID(c1.CategoryID);
@@ -398,13 +363,10 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
             _categoryService.Update(kat);
             return RedirectToAction("CategoryList");
         }
-
-
         public ActionResult AddShipper()
         {
             return View();
         }
-
         [HttpPost]
         public ActionResult AddShipper(Shipper model)
         {
@@ -429,13 +391,10 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
             }
             return View();
         }
-
         public ActionResult ShipperList()
         {
             return View(_shipperService.GetAll());
         }
-
-      
         public ActionResult ActiveShipper(int shipperID)
         {
             Shipper shipper = _shipperService.GetByID(shipperID);
@@ -452,13 +411,11 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
             return Json("ok", JsonRequestBehavior.AllowGet);
 
         }
-
         public ActionResult GetShipper(int id)
         {
             var shipper = _shipperService.GetByID(id);
             return View("GetShipper", shipper);
         }
-
         public ActionResult UpdateShipper(Shipper yeni)
         {
             var ship = _shipperService.GetByID(yeni.ShipperID);

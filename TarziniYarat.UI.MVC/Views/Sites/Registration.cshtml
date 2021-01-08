@@ -39,7 +39,7 @@
                     {
                         <h3>Yeni Hesap Oluştur</h3>
                         <br />
-                            <p class="alert-warning form-control">@(ViewBag.Hata == null ? "" : ViewBag.Hata )</p>                       <br />
+                            <p class="alert-warning form-control">@(ViewBag.Hata1 == null ? "" : ViewBag.Hata1 )</p>                       <br />
                         @*<form class="row login_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">*@
                         <div class="col-md-12 form-group">
                             @Html.TextBoxFor(a => a.TCKN, new { @class = "form-control", type = "number", placeholder = "T.C. Kimlik Numarası", required = "required", autofocus = "autofocus" })

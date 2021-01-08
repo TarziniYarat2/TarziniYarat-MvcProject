@@ -2004,7 +2004,6 @@
     <Content Include="Areas\Admin\Views\AdminProcess\CategoryList.cshtml" />
     <Content Include="Areas\Admin\Views\AdminProcess\BrandList.cshtml" />
     <Content Include="Areas\Admin\Views\AdminProcess\PersonList.cshtml" />
-    <Content Include="Areas\Admin\Views\Admin\BrowseComment.cshtml" />
     <Content Include="Areas\Admin\Views\AdminProcess\AddCategory.cshtml" />
     <Content Include="Areas\Admin\Views\AdminProcess\ShipperList.cshtml" />
     <Content Include="Areas\Admin\Views\AdminProcess\AddBrand.cshtml" />
@@ -2020,7 +2019,6 @@
     <None Include="packages.config" />
     <Content Include="Views\Shared\_LayoutSites.cshtml" />
     <Content Include="Views\Sites\Shop.cshtml" />
-    <Content Include="Views\Sites\ViewCombine.cshtml" />
     <Content Include="Views\Sites\Blog.cshtml" />
     <Content Include="Views\Sites\Login.cshtml" />
     <Content Include="Views\Sites\Registration.cshtml" />

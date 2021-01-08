@@ -266,9 +266,9 @@ namespace TarziniYarat.UI.MVC.Controllers
             }
             else
             {
-                ViewBag.Hata = "Bilgilerinizi kontrol ediniz. " +
+                ViewBag.Hata1 = "Bilgilerinizi kontrol ediniz. " +
                     "Şifreniz en az 6 karakterli olmalı. En az 1 sayı ve 1 harf içermelidir. " +
-                    "Kimlik numaranız 11 rakamdan az olamaz.";
+                    "Kimlik numaranız 11 rakamdan az veya fazla olamaz.";
                 //ModelState.AddModelError("", "Girdiğiniz bilgileri kontrol ediniz");
             }
             return View();

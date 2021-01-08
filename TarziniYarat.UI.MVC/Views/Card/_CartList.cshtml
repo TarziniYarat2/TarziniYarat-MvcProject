@@ -74,7 +74,7 @@ else
                 <div class="form-group">
                     @Html.LabelFor(model => model.PhoneNumber, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control", type = "" } })
+                        @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control", type = "number" } })
                         @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -82,7 +82,8 @@ else
 
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
-                        <input colspan="4" align="right" type="submit" value="Siparişi Onayla" class="btn btn-outline-info" />
+                        @*<input colspan="4" align="right" type="submit" value="Siparişi Onayla" class="btn btn-outline-info" />*@
+                        @Html.ActionLink("Siparişi Onayla", "ResultOrder", "Card", new { @class = "btn btn-outline-info" })
                     </div>
                 </div>
             </div>
